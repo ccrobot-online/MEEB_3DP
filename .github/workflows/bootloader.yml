@@ -80,3 +80,5 @@ jobs:
         git push origin master
         echo "::set-output name=ver::$(git describe --tags --always --dirty)"        
         
+        
+        

@@ -1,0 +1,59 @@
+#===================================================================================
+# Lisence: MIT
+# Author: ccccmagicboy
+# Url: https://ccrobot-online.com
+#===================================================================================
+
+name: MEEB_3DP BOOTLOADER
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+    - '.github/workflows/bootloader.yml'
+    - '!**.md'
+    - '!**.xlsx'
+    
+  schedule:
+    - cron: 0 20 * * *
+
+env:
+  INPUT_TZ1: Asia
+  INPUT_TZ2: Shanghai
+  REPO_URL: https://github.com/ccccmagicboy/STM32duino-bootloader.git
+  REPO_BRANCH: meeb_3dp
+  
+jobs:
+  build:
+    strategy:
+      matrix:
+        os:
+        - ubuntu-18.04
+        board:
+        - generic-pc13
+        - meeb_3dp
+        
+    runs-on: ${{ matrix.os }}
+
+    steps:
+    - name: Checkout this repos
+      uses: actions/checkout@v2    
+      
+    - name: Clone the bootloader source code
+      run: |
+        git clone --recursive $REPO_URL -b $REPO_BRANCH my_bootloader
+
+    - name: Get the cross-toolchain
+      run: |
+        sudo apt-get install gcc-arm-none-eabi
+        sudo apt-get install gcc
+        gcc -v
+        
+    - name: Make the bootloader
+      working-directory: ./my_bootloader
+      run: |
+        make ${{ matrix.board }}
+        
+        
+        

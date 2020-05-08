@@ -56,6 +56,13 @@ jobs:
         make ${{ matrix.board }}
         cp ./build/maple_boot.bin ../bootloader/bootloader_meeb_3dp.bin
         
+    - name: Get the datetime
+      id: get_datetime
+      uses: ccccmagicboy/get_datetime@master
+      with:
+        tz1: 'Asia'
+        tz2: 'Shanghai'        
+        
     - name: Commit the new bin file
       working-directory: ./bootloader
       run: |

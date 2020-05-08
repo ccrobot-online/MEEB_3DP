@@ -31,7 +31,7 @@ jobs:
         os:
         - ubuntu-18.04
         board:
-        - generic-pc13
+        # - generic-pc13
         - meeb_3dp
         
     runs-on: ${{ matrix.os }}

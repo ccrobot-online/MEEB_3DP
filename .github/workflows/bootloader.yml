@@ -59,11 +59,12 @@ jobs:
     - name: Commit the new bin file
       working-directory: ./bootloader
       run: |
+        ls -al
         echo "::set-output name=ver::$(git describe --tags --always --dirty)"      
         git config --global user.email "ci_bot@ccrobot-online.com"
         git config --global user.name "ci_bot"
         git diff --name-only
-        git add bootloader/bootloader_meeb_3dp.bin
+        git add bootloader_meeb_3dp.bin
         git commit -m "update the bootloader: ${{ steps.get_datetime.outputs.datetime_str }}"
         git describe --tags --always --dirty="-dev"
         echo "::set-output name=ver::$(git describe --tags --always --dirty=\"-dev\")"

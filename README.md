@@ -1,5 +1,7 @@
-MEEB_IPS_0_96
+MEEB_3DP
 =============================
-![](./img/meeb_ips_0_96.jpg)
+a 3d printer control board for MEEB.
+
+![](./img/meeb_3dp_top.png)
 
 

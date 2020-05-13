@@ -30,8 +30,6 @@ jobs:
       matrix:
         os:
         - ubuntu-18.04
-        board:
-        - meeb_3dp
         
     runs-on: ${{ matrix.os }}
 

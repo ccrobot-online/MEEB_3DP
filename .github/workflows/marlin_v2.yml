@@ -62,12 +62,17 @@ jobs:
         run_tests . STM32F103RC_cc_meeb_3dp
         
     - name: Config the Configuration.h/Configuration_adv.h
-      working-directory: my_marlin/Marlin
+      working-directory: my_marlin
       run: |
         export PATH=/home/runner/work/MEEB_3DP/MEEB_3DP/my_marlin/buildroot/bin:$PATH
-        
-        pwd
-        ls -al
+        restore_configs
+        opt_set MOTHERBOARD BOARD_CCROBOT_MEEB_3DP
+        opt_set SERIAL_PORT 1
+        opt_set SERIAL_PORT_2 -1
+        opt_set X_DRIVER_TYPE TMC2208
+        opt_set Y_DRIVER_TYPE TMC2208
+        opt_set Z_DRIVER_TYPE TMC2208
+        opt_set E0_DRIVER_TYPE TMC2208
         
     - name: Complie the Marlin
       working-directory: my_marlin

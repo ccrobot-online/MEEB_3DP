@@ -55,13 +55,19 @@ jobs:
         platformio update
         platformio --version
         
-    - name: Config the Configuration.h/Configuration_adv.h
+    - name: Run Tests
       working-directory: my_marlin
       run: |
-        cd buildroot/bin
-        pwd
-        ls -al
-        cd ../../Marlin
+        chmod +x buildroot/bin/*
+        chmod +x buildroot/share/tests/*
+        export PATH=./buildroot/bin/:./buildroot/share/tests/:${PATH}
+        run_tests . STM32F103RC_cc_meeb_3dp
+        
+    - name: Config the Configuration.h/Configuration_adv.h
+      working-directory: my_marlin/Marlin
+      run: |
+        export PATH=/home/runner/work/MEEB_3DP/MEEB_3DP/my_marlin/buildroot/bin:$PATH
+        
         pwd
         ls -al
         

@@ -37,7 +37,7 @@ jobs:
     - name: Checkout this repos
       uses: actions/checkout@v2    
       
-    - name: Clone the bootloader source code
+    - name: Clone the marlin source code
       run: |
         git clone --recursive $REPO_URL -b $REPO_BRANCH my_marlin
 

@@ -55,6 +55,16 @@ jobs:
         platformio update
         platformio --version
         
+    - name: Config the Configuration.h/Configuration_adv.h
+      working-directory: my_marlin
+      run: |
+        cd buildroot/bin
+        pwd
+        ls -al
+        cd ../../Marlin
+        pwd
+        ls -al
+        
     - name: Complie the Marlin
       working-directory: my_marlin
       run: |

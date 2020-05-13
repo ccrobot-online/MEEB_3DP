@@ -67,8 +67,8 @@ jobs:
         export PATH=/home/runner/work/MEEB_3DP/MEEB_3DP/my_marlin/buildroot/bin:$PATH
         restore_configs
         opt_set MOTHERBOARD BOARD_CCROBOT_MEEB_3DP
-        opt_set SERIAL_PORT 1
-        opt_set SERIAL_PORT_2 -1
+        opt_set SERIAL_PORT -1
+        opt_set SERIAL_PORT_2 1
         opt_set X_DRIVER_TYPE TMC2208
         opt_set Y_DRIVER_TYPE TMC2208
         opt_set Z_DRIVER_TYPE TMC2208

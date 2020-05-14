@@ -81,6 +81,9 @@ jobs:
         cd .pio/build/STM32F103RC_cc_meeb_3dp
         ls -al
         cp ./firmware.bin ../../../../Marlin_v2/firmware.bin
+        
+    - name: Debug the action
+      uses: p3terx/debugger-action@master   
           
     - name: Get the datetime
       id: get_datetime

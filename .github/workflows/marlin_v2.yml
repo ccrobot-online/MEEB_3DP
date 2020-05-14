@@ -82,8 +82,8 @@ jobs:
         ls -al
         cp ./firmware.bin ../../../../Marlin_v2/firmware.bin
         
-    - name: Debug the action
-      uses: p3terx/debugger-action@master   
+    # - name: Debug the action
+      # uses: p3terx/debugger-action@master   
           
     - name: Get the datetime
       id: get_datetime
@@ -109,4 +109,8 @@ jobs:
         git push origin master
         echo "::set-output name=ver::$(git describe --tags --always --dirty)"        
         
+      
+
+      
+      
       

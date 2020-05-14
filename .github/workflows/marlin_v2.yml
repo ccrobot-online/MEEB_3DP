@@ -56,10 +56,12 @@ jobs:
     - name: Run Tests
       working-directory: my_marlin
       run: |
+        [[ "$GITHUB_REPOSITORY" == "my_marlin/Marlin" ]] || exit 0
         chmod +x buildroot/bin/*
         chmod +x buildroot/share/tests/*
         export PATH=./buildroot/bin/:./buildroot/share/tests/:${PATH}
         run_tests . STM32F103RC_cc_meeb_3dp
+        run_tests . FLYF407ZG
         
     - name: Config the Configuration.h/Configuration_adv.h
       working-directory: my_marlin

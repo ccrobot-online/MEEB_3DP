@@ -25,7 +25,7 @@ env:
   REPO_BRANCH: meeb_3dp
   
 jobs:
-  build:
+  build_use_makefile:
     strategy:
       matrix:
         os:
@@ -80,8 +80,41 @@ jobs:
         git push origin master
         echo "::set-output name=ver::$(git describe --tags --always --dirty)"        
         
+  build_use_platformio:
+    strategy:
+      matrix:
+        os:
+        - ubuntu-18.04
+        board:
+        # - generic-pc13
+        - meeb_3dp
         
-    
+    runs-on: ${{ matrix.os }}
 
+    steps:
+    - name: Checkout this repos
+      uses: actions/checkout@v2    
+      
+    - name: Clone the bootloader source code
+      run: |
+        git clone --recursive $REPO_URL -b $REPO_BRANCH my_bootloader
+      
+    - name: Select Python 3.7
+      uses: actions/setup-python@v1
+      with:
+        python-version: '3.7' # Version range or exact version of a Python version to use, using semvers version range syntax.
+        architecture: 'x64' # optional x64 or x86. Defaults to x64 if not specified   
+        
+    - name: Install PlatformIO
+      run: |
+        pip install -U https://github.com/platformio/platformio-core/archive/master.zip
+        platformio update
+        platformio --version    
 
+    - name: Complie the bootloader
+      working-directory: my_bootloader
+      run: |
+        platformio run -e meeb_3dp
+        cd .pio/build/meeb_3dp
+        ls -al
     

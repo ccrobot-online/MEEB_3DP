@@ -24,6 +24,8 @@ env:
   REPO_URL: https://github.com/ccccmagicboy/Marlin.git
   REPO_BRANCH: meeb_3dp_board_pin_define
   
+  BOARD: BOARD_CCROBOT_MEEB_3DP  
+  
 jobs:
   build:
     strategy:
@@ -66,17 +68,10 @@ jobs:
       uses: p3terx/debugger-action@master
         
     - name: Config the Configuration.h/Configuration_adv.h
-      working-directory: my_marlin
-      run: |
-        export PATH=/home/runner/work/MEEB_3DP/MEEB_3DP/my_marlin/buildroot/bin:$PATH
-        restore_configs
-        opt_set MOTHERBOARD BOARD_CCROBOT_MEEB_3DP
-        opt_set SERIAL_PORT -1
-        opt_set SERIAL_PORT_2 1
-        opt_set X_DRIVER_TYPE TMC2208
-        opt_set Y_DRIVER_TYPE TMC2208
-        opt_set Z_DRIVER_TYPE TMC2208
-        opt_set E0_DRIVER_TYPE TMC2208
+      id: config_marlin
+      uses: ccccmagicboy/Marlin_config@master
+      with:
+        BOARD: $BOARD        
         
     - name: Complie the Marlin
       working-directory: my_marlin

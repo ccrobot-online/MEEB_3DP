@@ -105,5 +105,16 @@ jobs:
         git push origin master
         echo "::set-output name=ver::$(git describe --tags --always --dirty)"        
         
-      
+    - name: Zip the artifact
+      run: |
+        zip --junk-paths MEEB_3DP_MARLIN_ENDER3_${{ steps.get_datetime.outputs.datetime_str }} my_marlin/.pio/build/STM32F103RC_cc_meeb_3dp/firmware.bin my_marlin/Marlin/Configuration.h my_marlin/Marlin/Configuration_adv.h README.md
+                   
+    - name: Upload the zip file
+      uses: actions/upload-artifact@master
+      with:
+        name: MEEB_3DP_MARLIN_ENDER3_${{ steps.get_datetime.outputs.datetime_str }}
+        path: MEEB_3DP_MARLIN_ENDER3_${{ steps.get_datetime.outputs.datetime_str }}.zip        
+        
+
+        
       

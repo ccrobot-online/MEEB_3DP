@@ -69,7 +69,7 @@ jobs:
         
     - name: Config the Configuration.h/Configuration_adv.h
       id: config_marlin
-      uses: ccccmagicboy/Marlin_config@master
+      uses: ccccmagicboy/Marlin_config@meeb_3dp_ender3
       with:
         BOARD: $BOARD        
         

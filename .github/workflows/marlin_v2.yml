@@ -80,6 +80,8 @@ jobs:
         cd .pio/build/STM32F103RC_cc_meeb_3dp
         ls -al
         cp ./firmware.bin ../../../../Marlin_v2/firmware.bin
+        cp ../../../Marlin/Configuration.h ../../../../Marlin_v2/Configuration.h
+        cp ../../../Marlin/Configuration_adv.h ../../../../Marlin_v2/Configuration_adv.h
           
     - name: Get the datetime
       id: get_datetime
@@ -107,6 +109,8 @@ jobs:
         git config --global user.name "ci_bot"
         git diff --name-only
         git add firmware.bin
+        git add Configuration.h
+        git add Configuration_adv.h
         git commit -m "update the marlin v2 firmware: ${{ steps.get_datetime.outputs.datetime_str }}"
         git describe --tags --always --dirty="-dev"
         echo "::set-output name=ver::$(git describe --tags --always --dirty=\"-dev\")"

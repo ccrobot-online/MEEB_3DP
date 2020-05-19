@@ -65,7 +65,7 @@ jobs:
         
     - name: Debug the action
       if: ${{ failure() }}
-      uses: p3terx/debugger-action@master
+      uses: ccccmagicboy/debugger-action@master
         
     - name: Config the Configuration.h/Configuration_adv.h
       id: config_marlin

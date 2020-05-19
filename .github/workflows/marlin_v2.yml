@@ -82,6 +82,10 @@ jobs:
         cp ./firmware.bin ../../../../Marlin_v2/firmware.bin
         cp ../../../Marlin/Configuration.h ../../../../Marlin_v2/Configuration.h
         cp ../../../Marlin/Configuration_adv.h ../../../../Marlin_v2/Configuration_adv.h
+        
+    - name: Debug the action
+      if: ${{ failure() }}
+      uses: ccccmagicboy/debugger-action@master        
           
     - name: Get the datetime
       id: get_datetime

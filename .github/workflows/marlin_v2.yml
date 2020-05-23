@@ -86,7 +86,17 @@ jobs:
         
     - name: Debug the action
       if: ${{ failure() }}
-      uses: ccccmagicboy/debugger-action@master        
+      uses: ccccmagicboy/debugger-action@master
+      
+    - name: Make the final image
+      id: makeimg
+      uses: ccccmagicboy/make_image@master
+      with:
+        BOOTLOADER_PATH: 'bootloader/bootloader_meeb_3dp.bin'
+        BOOTLOADER_OFFSET: '0x0'
+        MARLIN_PATH: 'Marlin_v2/firmware.bin'
+        MARLIN_OFFSET: '0x2000'
+        FILE_OUTPUT_NAME: 'Marlin_v2/firmware_with_bootloader.bin'
           
     - name: Get the datetime
       id: get_datetime
@@ -97,7 +107,7 @@ jobs:
         
     - name: Zip the artifact
       run: |
-        zip --junk-paths MEEB_3DP_MARLIN_ENDER3_${{ steps.get_datetime.outputs.datetime_str }} my_marlin/.pio/build/STM32F103RC_cc_meeb_3dp/firmware.bin my_marlin/Marlin/Configuration.h my_marlin/Marlin/Configuration_adv.h README.md
+        zip --junk-paths MEEB_3DP_MARLIN_ENDER3_${{ steps.get_datetime.outputs.datetime_str }} my_marlin/.pio/build/STM32F103RC_cc_meeb_3dp/firmware.bin Marlin_v2/firmware_with_bootloader.bin my_marlin/Marlin/Configuration.h my_marlin/Marlin/Configuration_adv.h README.md
                    
     - name: Upload the zip file
       uses: actions/upload-artifact@master
@@ -114,6 +124,7 @@ jobs:
         git config --global user.name "${GITHUB_ACTOR}"
         git diff --name-only
         git add firmware.bin
+        git add firmware_with_bootloader.bin
         git add Configuration.h
         git add Configuration_adv.h
         git commit -m "[cron] update the marlin v2 firmware: ${{ steps.get_datetime.outputs.datetime_str }}"

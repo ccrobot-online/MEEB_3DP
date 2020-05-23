@@ -3,7 +3,8 @@
 # Author: ccccmagicboy
 # Url: https://ccrobot-online.com
 #===================================================================================
-
+# Build the marlin firmware branch bugfix-2.0.x once per day.
+#===================================================================================
 name: MEEB_3DP Marlin v2
 
 on:
@@ -109,13 +110,13 @@ jobs:
       run: |
         ls -al
         echo "::set-output name=ver::$(git describe --tags --always --dirty)"      
-        git config --global user.email "ci_bot@ccrobot-online.com"
-        git config --global user.name "ci_bot"
+        git config --global user.email "${GITHUB_ACTOR}@users.noreply.github.com"
+        git config --global user.name "${GITHUB_ACTOR}"
         git diff --name-only
         git add firmware.bin
         git add Configuration.h
         git add Configuration_adv.h
-        git commit -m "update the marlin v2 firmware: ${{ steps.get_datetime.outputs.datetime_str }}"
+        git commit -m "[cron] update the marlin v2 firmware: ${{ steps.get_datetime.outputs.datetime_str }}"
         git describe --tags --always --dirty="-dev"
         echo "::set-output name=ver::$(git describe --tags --always --dirty=\"-dev\")"
         git remote rm origin

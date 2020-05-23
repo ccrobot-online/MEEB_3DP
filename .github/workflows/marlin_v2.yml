@@ -131,6 +131,7 @@ jobs:
         git add firmware_with_bootloader.bin
         git add Configuration.h
         git add Configuration_adv.h
+        git add depend.txt
         git commit -m "[cron] update the marlin v2 firmware: ${{ steps.get_datetime.outputs.datetime_str }}"
         git describe --tags --always --dirty="-dev"
         echo "::set-output name=ver::$(git describe --tags --always --dirty=\"-dev\")"

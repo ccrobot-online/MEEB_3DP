@@ -85,6 +85,7 @@ jobs:
         cp ../../../Marlin/Configuration_adv.h ../../../../Marlin_v2/Configuration_adv.h
         cd ../../libdeps/STM32F103RC_cc_meeb_3dp
         ls -al
+        apt-get install tree
         tree -L 1 >depend.txt
         cp depend.txt ../../../../Marlin_v2/depend.txt
         

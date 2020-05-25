@@ -1,4 +1,4 @@
 st-info.exe --probe
-st-flash.exe write bootloader_meeb_3dp.bin 0x8000000
+st-flash.exe write firmware_with_bootloader.bin 0x8000000
 
 

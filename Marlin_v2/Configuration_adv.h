@@ -2046,7 +2046,7 @@
   #if AXIS_DRIVER_TYPE_Z(TMC26X)
     #define Z_MAX_CURRENT     1000
     #define Z_SENSE_RESISTOR    91
-    #define Z_MICROSTEPS        16
+    #define Z_MICROSTEPS 64
   #endif
 
   #if AXIS_DRIVER_TYPE_Z2(TMC26X)
@@ -2141,7 +2141,7 @@
   #define INTERPOLATE       true  // Interpolate X/Y/Z_MICROSTEPS to 256
 
   #if AXIS_IS_TMC(X)
-    #define X_CURRENT 580
+    #define X_CURRENT 700
     #define X_CURRENT_HOME  X_CURRENT  // (mA) RMS current for sensorless homing
     #define X_MICROSTEPS     16    // 0..256
     #define X_RSENSE 0.1
@@ -2157,7 +2157,7 @@
   #endif
 
   #if AXIS_IS_TMC(Y)
-    #define Y_CURRENT 580
+    #define Y_CURRENT 700
     #define Y_CURRENT_HOME  Y_CURRENT
     #define Y_MICROSTEPS     16
     #define Y_RSENSE 0.1
@@ -2173,9 +2173,9 @@
   #endif
 
   #if AXIS_IS_TMC(Z)
-    #define Z_CURRENT 580
+    #define Z_CURRENT 700
     #define Z_CURRENT_HOME  Z_CURRENT
-    #define Z_MICROSTEPS     16
+    #define Z_MICROSTEPS 64
     #define Z_RSENSE 0.1
     #define Z_CHAIN_POS      -1
   #endif
@@ -2205,7 +2205,7 @@
   #endif
 
   #if AXIS_IS_TMC(E0)
-    #define E0_CURRENT 650
+    #define E0_CURRENT 800
     #define E0_MICROSTEPS    16
     #define E0_RSENSE 0.1
     #define E0_CHAIN_POS     -1
@@ -2537,7 +2537,7 @@
   #endif
 
   #if AXIS_IS_L64XX(Z)
-    #define Z_MICROSTEPS       128
+    #define Z_MICROSTEPS 64
     #define Z_OVERCURRENT     2000
     #define Z_STALLCURRENT    1500
     #define Z_MAX_VOLTAGE      127

@@ -1,7 +1,7 @@
 .
+├── Adafruit MAX31865 library_ID1253
 ├── Adafruit NeoPixel
 ├── Adafruit NeoPixel_ID28
-├── Adafruit_MAX31865
 ├── Arduino-L6470
 ├── LiquidTWI2
 ├── SailfishLCD

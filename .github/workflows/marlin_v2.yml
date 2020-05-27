@@ -29,6 +29,8 @@ env:
   
 jobs:
   build:
+    name: Build for Ender-3
+    # needs: build
     strategy:
       matrix:
         os:
@@ -68,10 +70,6 @@ jobs:
         export PATH=./buildroot/bin/:./buildroot/share/tests/:${PATH}
         run_tests . STM32F103RC_cc_meeb_3dp
         
-    - name: Debug the action
-      if: ${{ failure() }}
-      uses: ccccmagicboy/debugger-action@master
-        
     - name: Config the Configuration.h/Configuration_adv.h
       id: config_marlin
       uses: ccccmagicboy/Marlin_config@meeb_3dp_ender3
@@ -84,17 +82,13 @@ jobs:
         platformio run -e STM32F103RC_cc_meeb_3dp
         cd .pio/build/STM32F103RC_cc_meeb_3dp
         ls -al
-        cp ./firmware.bin ../../../../Marlin_v2/firmware.bin
-        cp ../../../Marlin/Configuration.h ../../../../Marlin_v2/Configuration.h
-        cp ../../../Marlin/Configuration_adv.h ../../../../Marlin_v2/Configuration_adv.h
+        cp ./firmware.bin ../../../../Marlin_v2/ender3/firmware.bin
+        cp ../../../Marlin/Configuration.h ../../../../Marlin_v2/ender3/Configuration.h
+        cp ../../../Marlin/Configuration_adv.h ../../../../Marlin_v2/ender3/Configuration_adv.h
         cd ../../libdeps/STM32F103RC_cc_meeb_3dp
         ls -al
         tree -L 1 >depend.txt
-        cp depend.txt ../../../../Marlin_v2/depend.txt
-        
-    - name: Debug the action
-      if: ${{ failure() }}
-      uses: ccccmagicboy/debugger-action@master
+        cp depend.txt ../../../../Marlin_v2/ender3/depend.txt
       
     - name: Make the final image
       id: makeimg
@@ -102,9 +96,9 @@ jobs:
       with:
         BOOTLOADER_PATH: 'bootloader/bootloader_meeb_3dp.bin'
         BOOTLOADER_OFFSET: '0x0'
-        MARLIN_PATH: 'Marlin_v2/firmware.bin'
+        MARLIN_PATH: 'Marlin_v2/ender3/firmware.bin'
         MARLIN_OFFSET: '0x2000'
-        FILE_OUTPUT_NAME: 'bootloader/firmware_with_bootloader.bin'
+        FILE_OUTPUT_NAME: 'bootloader/firmware_with_bootloader_for_ender3.bin'
           
     - name: Get the datetime
       id: get_datetime
@@ -115,7 +109,7 @@ jobs:
         
     - name: Zip the artifact
       run: |
-        zip --junk-paths MEEB_3DP_MARLIN_ENDER3_${{ steps.get_datetime.outputs.datetime_str }} my_marlin/.pio/build/STM32F103RC_cc_meeb_3dp/firmware.bin bootloader/firmware_with_bootloader.bin my_marlin/Marlin/Configuration.h my_marlin/Marlin/Configuration_adv.h README.md
+        zip --junk-paths MEEB_3DP_MARLIN_ENDER3_${{ steps.get_datetime.outputs.datetime_str }} my_marlin/.pio/build/STM32F103RC_cc_meeb_3dp/firmware.bin bootloader/firmware_with_bootloader_for_ender3.bin my_marlin/Marlin/Configuration.h my_marlin/Marlin/Configuration_adv.h README.md
                    
     - name: Upload the zip file
       uses: actions/upload-artifact@master
@@ -132,11 +126,11 @@ jobs:
         git config --global user.name "${GITHUB_ACTOR}"
         git diff --name-only
         git add firmware.bin
-        git add ../bootloader/firmware_with_bootloader.bin
+        git add ../bootloader/firmware_with_bootloader_for_ender3.bin
         git add Configuration.h
         git add Configuration_adv.h
         git add depend.txt
-        git commit -m "[cron] update the marlin v2 firmware: ${{ steps.get_datetime.outputs.datetime_str }}"
+        git commit -m "[cron] update the marlin v2 firmware for ender3: ${{ steps.get_datetime.outputs.datetime_str }}"
         git describe --tags --always --dirty="-dev"
         echo "::set-output name=ver::$(git describe --tags --always --dirty=\"-dev\")"
         git remote rm origin
@@ -144,5 +138,108 @@ jobs:
         git push origin master
         echo "::set-output name=ver::$(git describe --tags --always --dirty)"   
         
+  build_1:
+    name: Build for CR10-mini
+    needs: build
+    strategy:
+      matrix:
+        os:
+        - ubuntu-18.04
+        
+    runs-on: ${{ matrix.os }}
+
+    steps:
+    - name: Checkout this repos
+      uses: actions/checkout@v2    
+      
+    - name: Clone the marlin source code
+      run: |
+        git clone --recursive $REPO_URL -b $REPO_BRANCH my_marlin
+        
+    - name: Install apt
+      run: |
+        sudo apt-get install tree      
+
+    - name: Select Python 3.7
+      uses: actions/setup-python@v1
+      with:
+        python-version: '3.7' # Version range or exact version of a Python version to use, using semvers version range syntax.
+        architecture: 'x64' # optional x64 or x86. Defaults to x64 if not specified   
+        
+    - name: Install PlatformIO
+      run: |
+        pip install -U https://github.com/platformio/platformio-core/archive/master.zip
+        platformio update
+        platformio --version
+        
+    - name: Config the Configuration.h/Configuration_adv.h
+      id: config_marlin
+      uses: ccccmagicboy/Marlin_config@meeb_3dp_cr10mini
+      with:
+        BOARD: $BOARD
+        
+    - name: Complie the Marlin
+      working-directory: my_marlin
+      run: |
+        platformio run -e STM32F103RC_cc_meeb_3dp
+        cd .pio/build/STM32F103RC_cc_meeb_3dp
+        ls -al
+        cp ./firmware.bin ../../../../Marlin_v2/cr10mini/firmware.bin
+        cp ../../../Marlin/Configuration.h ../../../../Marlin_v2/cr10mini/Configuration.h
+        cp ../../../Marlin/Configuration_adv.h ../../../../Marlin_v2/cr10mini/Configuration_adv.h
+        cd ../../libdeps/STM32F103RC_cc_meeb_3dp
+        ls -al
+        tree -L 1 >depend.txt
+        cp depend.txt ../../../../Marlin_v2/cr10mini/depend.txt
+      
+    - name: Make the final image
+      id: makeimg
+      uses: ccccmagicboy/make_image@master
+      with:
+        BOOTLOADER_PATH: 'bootloader/bootloader_meeb_3dp.bin'
+        BOOTLOADER_OFFSET: '0x0'
+        MARLIN_PATH: 'Marlin_v2/cr10mini/firmware.bin'
+        MARLIN_OFFSET: '0x2000'
+        FILE_OUTPUT_NAME: 'bootloader/firmware_with_bootloader_for_cr10mini.bin'
+          
+    - name: Get the datetime
+      id: get_datetime
+      uses: ccccmagicboy/get_datetime@master
+      with:
+        tz1: 'Asia'
+        tz2: 'Shanghai'             
+        
+    - name: Zip the artifact
+      run: |
+        zip --junk-paths MEEB_3DP_MARLIN_CR10MINI_${{ steps.get_datetime.outputs.datetime_str }} my_marlin/.pio/build/STM32F103RC_cc_meeb_3dp/firmware.bin bootloader/firmware_with_bootloader_for_cr10mini.bin my_marlin/Marlin/Configuration.h my_marlin/Marlin/Configuration_adv.h README.md
+                   
+    - name: Upload the zip file
+      uses: actions/upload-artifact@master
+      with:
+        name: MEEB_3DP_MARLIN_CR10MINI_${{ steps.get_datetime.outputs.datetime_str }}
+        path: MEEB_3DP_MARLIN_CR10MINI_${{ steps.get_datetime.outputs.datetime_str }}.zip        
+        
+    - name: Commit the new bin file
+      working-directory: ./Marlin_v2
+      run: |
+        ls -al
+        echo "::set-output name=ver::$(git describe --tags --always --dirty)"      
+        git config --global user.email "${GITHUB_ACTOR}@users.noreply.github.com"
+        git config --global user.name "${GITHUB_ACTOR}"
+        git diff --name-only
+        git add firmware.bin
+        git add ../bootloader/firmware_with_bootloader_for_cr10mini.bin
+        git add Configuration.h
+        git add Configuration_adv.h
+        git add depend.txt
+        git commit -m "[cron] update the marlin v2 firmware for cr10mini: ${{ steps.get_datetime.outputs.datetime_str }}"
+        git describe --tags --always --dirty="-dev"
+        echo "::set-output name=ver::$(git describe --tags --always --dirty=\"-dev\")"
+        git remote rm origin
+        git remote add origin https://${{ secrets.GITHUB_ID }}:${{ secrets.GITHUB_PW }}@github.com/ccrobot-online/MEEB_3DP.git
+        git push origin master
+        echo "::set-output name=ver::$(git describe --tags --always --dirty)"   
+
+
         
 # test15

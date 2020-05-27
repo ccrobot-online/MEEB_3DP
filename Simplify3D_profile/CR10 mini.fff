@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<profile name="CR10 mini" version="2020-05-27 16:40:12" app="S3D-Software 4.1.2">
+<profile name="CR10 mini" version="2020-05-27 17:08:44" app="S3D-Software 4.1.2">
   <baseProfile>Default (modified)</baseProfile>
   <printMaterial>eSUN PLA+</printMaterial>
   <printQuality>Medium</printQuality>
@@ -142,7 +142,7 @@
   <baudRateOverride>115200</baudRateOverride>
   <overridePrinterModels>1</overridePrinterModels>
   <printerModelsOverride>bed.STL</printerModelsOverride>
-  <startingGcode>M300 S300 P1000,M118 //action:stepsPmm,M117 steps/mm SET OK!,M118 //action:maxFeedRate,M117 Max Feed Rate OK!,M118 //action:maxAcceleration,M117 Max Acceleration OK!,M118 //action:defaultAcceleration,M117 Default Acceleration OK!,M118 //action:setJerk,M117 JERK SET OK!,M118 //action:setHomeoffset,M117 HOME OFFSET SET OK!,M118 //action:setFlowRate,M117 FLOW RATE SET OK!,G28 ; home all axes,G28 Z F100 ; home Z slowly,M117 HOME OK!,G1 Z40 F3000 ; Z lift,G1 X10 Y10 Z0.4 F3000 ; bring extruder to the front,M118 //action:babystep,M117 BABYSTEP OK!,G92 E0 ; zero the extruded length,G1 X40 E50 F100 ; purge nozzle with 50mm of filament,G1 X50 F2100,M117 START!!!,M118 //action:kfactor,M117 K-FACTOR OK!,G92 E0 ; zero again,</startingGcode>
+  <startingGcode>M16 CR10-mini,M300 S300 P1000,M118 //action:stepsPmm,M117 steps/mm SET OK!,M118 //action:maxFeedRate,M117 Max Feed Rate OK!,M118 //action:maxAcceleration,M117 Max Acceleration OK!,M118 //action:defaultAcceleration,M117 Default Acceleration OK!,M118 //action:setJerk,M117 JERK SET OK!,M118 //action:setHomeoffset,M117 HOME OFFSET SET OK!,M118 //action:setFlowRate,M117 FLOW RATE SET OK!,G28 ; home all axes,G28 Z F100 ; home Z slowly,M117 HOME OK!,G1 Z40 F3000 ; Z lift,G1 X10 Y10 Z0.4 F3000 ; bring extruder to the front,M118 //action:babystep,M117 BABYSTEP OK!,G92 E0 ; zero the extruded length,G1 X40 E50 F100 ; purge nozzle with 50mm of filament,G1 X50 F2100,M117 START!!!,M118 //action:kfactor,M117 K-FACTOR OK!,G92 E0 ; zero again,</startingGcode>
   <layerChangeGcode>M118 //action:layerChange</layerChangeGcode>
   <retractionGcode></retractionGcode>
   <toolChangeGcode></toolChangeGcode>

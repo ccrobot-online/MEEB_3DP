@@ -237,6 +237,8 @@ jobs:
         echo "::set-output name=ver::$(git describe --tags --always --dirty=\"-dev\")"
         git remote rm origin
         git remote add origin https://${{ secrets.GITHUB_ID }}:${{ secrets.GITHUB_PW }}@github.com/ccrobot-online/MEEB_3DP.git
+        git fetch origin master
+        git rebase origin master
         git push origin master
         echo "::set-output name=ver::$(git describe --tags --always --dirty)"   
 

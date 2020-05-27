@@ -1,0 +1,334 @@
+<?xml version="1.0"?>
+<profile name="Ender 3" version="2019-11-21 17:09:34" app="S3D-Software 4.0.0">
+  <baseProfile>Default (modified)</baseProfile>
+  <printMaterial>eSUN PLA+</printMaterial>
+  <printQuality>Medium</printQuality>
+  <printExtruders></printExtruders>
+  <extruder name="Primary Extruder">
+    <toolheadNumber>0</toolheadNumber>
+    <diameter>0.4</diameter>
+    <autoWidth>0</autoWidth>
+    <width>0.44</width>
+    <extrusionMultiplier>1</extrusionMultiplier>
+    <useRetract>1</useRetract>
+    <retractionDistance>3.6</retractionDistance>
+    <extraRestartDistance>0</extraRestartDistance>
+    <retractionZLift>0</retractionZLift>
+    <retractionSpeed>18000</retractionSpeed>
+    <useCoasting>0</useCoasting>
+    <coastingDistance>0.4</coastingDistance>
+    <useWipe>1</useWipe>
+    <wipeDistance>0.4</wipeDistance>
+  </extruder>
+  <primaryExtruder>0</primaryExtruder>
+  <layerHeight>0.2</layerHeight>
+  <topSolidLayers>5</topSolidLayers>
+  <bottomSolidLayers>3</bottomSolidLayers>
+  <perimeterOutlines>3</perimeterOutlines>
+  <printPerimetersInsideOut>0</printPerimetersInsideOut>
+  <startPointOption>3</startPointOption>
+  <startPointOriginX>0</startPointOriginX>
+  <startPointOriginY>230</startPointOriginY>
+  <sequentialIslands>1</sequentialIslands>
+  <spiralVaseMode>0</spiralVaseMode>
+  <firstLayerHeightPercentage>100</firstLayerHeightPercentage>
+  <firstLayerWidthPercentage>100</firstLayerWidthPercentage>
+  <firstLayerUnderspeed>0.18</firstLayerUnderspeed>
+  <useRaft>0</useRaft>
+  <raftExtruder>0</raftExtruder>
+  <raftTopLayers>3</raftTopLayers>
+  <raftBaseLayers>2</raftBaseLayers>
+  <raftOffset>3</raftOffset>
+  <raftSeparationDistance>0.14</raftSeparationDistance>
+  <raftTopInfill>100</raftTopInfill>
+  <aboveRaftSpeedMultiplier>0.3</aboveRaftSpeedMultiplier>
+  <useSkirt>1</useSkirt>
+  <skirtExtruder>0</skirtExtruder>
+  <skirtLayers>1</skirtLayers>
+  <skirtOutlines>2</skirtOutlines>
+  <skirtOffset>0.8</skirtOffset>
+  <usePrimePillar>0</usePrimePillar>
+  <primePillarExtruder>999</primePillarExtruder>
+  <primePillarWidth>12</primePillarWidth>
+  <primePillarLocation>7</primePillarLocation>
+  <primePillarSpeedMultiplier>1</primePillarSpeedMultiplier>
+  <useOozeShield>0</useOozeShield>
+  <oozeShieldExtruder>999</oozeShieldExtruder>
+  <oozeShieldOffset>2</oozeShieldOffset>
+  <oozeShieldOutlines>1</oozeShieldOutlines>
+  <oozeShieldSidewallShape>1</oozeShieldSidewallShape>
+  <oozeShieldSidewallAngle>30</oozeShieldSidewallAngle>
+  <oozeShieldSpeedMultiplier>1</oozeShieldSpeedMultiplier>
+  <infillExtruder>0</infillExtruder>
+  <internalInfillPattern>Full Honeycomb</internalInfillPattern>
+  <externalInfillPattern>Rectilinear</externalInfillPattern>
+  <infillPercentage>20</infillPercentage>
+  <outlineOverlapPercentage>20</outlineOverlapPercentage>
+  <infillExtrusionWidthPercentage>110</infillExtrusionWidthPercentage>
+  <minInfillLength>1</minInfillLength>
+  <infillLayerInterval>1</infillLayerInterval>
+  <internalInfillAngles>0,120,-120</internalInfillAngles>
+  <overlapInternalInfillAngles>0</overlapInternalInfillAngles>
+  <externalInfillAngles>0,90</externalInfillAngles>
+  <generateSupport>0</generateSupport>
+  <supportExtruder>0</supportExtruder>
+  <supportInfillPercentage>30</supportInfillPercentage>
+  <supportExtraInflation>0.3</supportExtraInflation>
+  <supportBaseLayers>1</supportBaseLayers>
+  <denseSupportExtruder>0</denseSupportExtruder>
+  <denseSupportLayers>0</denseSupportLayers>
+  <denseSupportInfillPercentage>70</denseSupportInfillPercentage>
+  <supportLayerInterval>2</supportLayerInterval>
+  <supportHorizontalPartOffset>0.3</supportHorizontalPartOffset>
+  <supportUpperSeparationLayers>1</supportUpperSeparationLayers>
+  <supportLowerSeparationLayers>1</supportLowerSeparationLayers>
+  <supportType>0</supportType>
+  <supportGridSpacing>3</supportGridSpacing>
+  <maxOverhangAngle>60</maxOverhangAngle>
+  <supportAngles>0</supportAngles>
+  <temperatureController name="Primary Extruder">
+    <temperatureNumber>0</temperatureNumber>
+    <isHeatedBed>0</isHeatedBed>
+    <relayBetweenLayers>0</relayBetweenLayers>
+    <relayBetweenLoops>0</relayBetweenLoops>
+    <stabilizeAtStartup>1</stabilizeAtStartup>
+    <setpoint layer="1" temperature="210"/>
+  </temperatureController>
+  <temperatureController name="Bed">
+    <temperatureNumber>0</temperatureNumber>
+    <isHeatedBed>1</isHeatedBed>
+    <relayBetweenLayers>0</relayBetweenLayers>
+    <relayBetweenLoops>0</relayBetweenLoops>
+    <stabilizeAtStartup>0</stabilizeAtStartup>
+    <setpoint layer="1" temperature="60"/>
+  </temperatureController>
+  <fanSpeed>
+    <setpoint layer="1" speed="0"/>
+    <setpoint layer="2" speed="100"/>
+  </fanSpeed>
+  <blipFanToFullPower>1</blipFanToFullPower>
+  <adjustSpeedForCooling>1</adjustSpeedForCooling>
+  <minSpeedLayerTime>15</minSpeedLayerTime>
+  <minCoolingSpeedSlowdown>20</minCoolingSpeedSlowdown>
+  <increaseFanForCooling>1</increaseFanForCooling>
+  <minFanLayerTime>30</minFanLayerTime>
+  <maxCoolingFanSpeed>100</maxCoolingFanSpeed>
+  <increaseFanForBridging>1</increaseFanForBridging>
+  <bridgingFanSpeed>100</bridgingFanSpeed>
+  <use5D>1</use5D>
+  <relativeEdistances>1</relativeEdistances>
+  <allowEaxisZeroing>0</allowEaxisZeroing>
+  <independentExtruderAxes>0</independentExtruderAxes>
+  <includeM10123>0</includeM10123>
+  <stickySupport>1</stickySupport>
+  <applyToolheadOffsets>0</applyToolheadOffsets>
+  <gcodeXoffset>0</gcodeXoffset>
+  <gcodeYoffset>0</gcodeYoffset>
+  <gcodeZoffset>0</gcodeZoffset>
+  <overrideMachineDefinition>1</overrideMachineDefinition>
+  <machineTypeOverride>0</machineTypeOverride>
+  <strokeXoverride>230</strokeXoverride>
+  <strokeYoverride>230</strokeYoverride>
+  <strokeZoverride>240</strokeZoverride>
+  <originOffsetXoverride>5</originOffsetXoverride>
+  <originOffsetYoverride>5</originOffsetYoverride>
+  <originOffsetZoverride>0</originOffsetZoverride>
+  <homeXdirOverride>-1</homeXdirOverride>
+  <homeYdirOverride>-1</homeYdirOverride>
+  <homeZdirOverride>-1</homeZdirOverride>
+  <flipXoverride>1</flipXoverride>
+  <flipYoverride>-1</flipYoverride>
+  <flipZoverride>1</flipZoverride>
+  <toolheadOffsets>0,0|0,0|0,0|0,0|0,0|0,0</toolheadOffsets>
+  <overrideFirmwareConfiguration>1</overrideFirmwareConfiguration>
+  <firmwareTypeOverride>RepRap (Marlin/Repetier/Sprinter)</firmwareTypeOverride>
+  <GPXconfigOverride>r2</GPXconfigOverride>
+  <baudRateOverride>115200</baudRateOverride>
+  <overridePrinterModels>1</overridePrinterModels>
+  <printerModelsOverride>bed.STL</printerModelsOverride>
+  <startingGcode>M300 S300 P1000,M118 //action:stepsPmm,M117 steps/mm SET OK!,M118 //action:maxFeedRate,M117 Max Feed Rate OK!,M118 //action:maxAcceleration,M117 Max Acceleration OK!,M118 //action:defaultAcceleration,M117 Default Acceleration OK!,M118 //action:setJerk,M117 JERK SET OK!,M118 //action:setHomeoffset,M117 HOME OFFSET SET OK!,M118 //action:setFlowRate,M117 FLOW RATE SET OK!,G28 ; home all axes,G28 Z F100 ; home Z slowly,M117 HOME OK!,G1 Z40 F3000 ; Z lift,G1 X10 Y10 Z0.4 F3000 ; bring extruder to the front,M118 //action:babystep,M117 BABYSTEP OK!,G92 E0 ; zero the extruded length,G1 X40 E50 F100 ; purge nozzle with 50mm of filament,G1 X50 F2100,M117 START!!!,M118 //action:kfactor,M117 K-FACTOR OK!,G92 E0 ; zero again,</startingGcode>
+  <layerChangeGcode>M118 //action:layerChange</layerChangeGcode>
+  <retractionGcode></retractionGcode>
+  <toolChangeGcode></toolChangeGcode>
+  <endingGcode>G28 X0 ; home X axis,G92 E0 ; zero the extruded length,G1 E-15 F1800 ; retract,M104 S0 ; kill extruder temperature,M140 S0 ; kill bed temperature,G1 Y150 ; y to camera center,G1 Z240 F600 ; z to max,M107; kill fan,M84 ; disable motors,M81 ; power off,M300 S3520 P200,M300 S4698.63 P200,M300 S5274.04 P200,M300 S6271.93 P200,;M118 //action:prompt_begin GCODE IS COMPLETE FINISHED. Please choose how to proceed:,;M118 //action:prompt_choice PRINT AGAIN,;M118 //action:prompt_choice SHUTDOWN PRINTER,;M118 //action:prompt_choice NOTHING TO DO,;M118 //action:prompt_show,;M0 Click to Print!!!,M118 //action:ipaddr,M150 B0 P255 R0 U255 W0</endingGcode>
+  <exportFileFormat>gcode</exportFileFormat>
+  <celebration>0</celebration>
+  <celebrationSong>Funky Town</celebrationSong>
+  <postProcessing>{STRIP &quot;;&quot;},{PREPEND &quot;M117 bed PID SET OK!\n&quot;},{PREPEND &quot;M118 //action:setPIDbed\n&quot;},{PREPEND &quot;M117 E0 PID SET OK!\n&quot;},{PREPEND &quot;M118 //action:setPIDe0\n&quot;},{PREPEND &quot;;printer_model=ender3\n&quot;}</postProcessing>
+  <defaultSpeed>5400</defaultSpeed>
+  <outlineUnderspeed>0.5</outlineUnderspeed>
+  <solidInfillUnderspeed>0.65</solidInfillUnderspeed>
+  <supportUnderspeed>0.8</supportUnderspeed>
+  <rapidXYspeed>7200</rapidXYspeed>
+  <rapidZspeed>3000</rapidZspeed>
+  <minBridgingArea>20</minBridgingArea>
+  <bridgingExtraInflation>1</bridgingExtraInflation>
+  <bridgingExtrusionMultiplier>0.75</bridgingExtrusionMultiplier>
+  <bridgingSpeedMultiplier>1.2</bridgingSpeedMultiplier>
+  <useFixedBridgingAngle>0</useFixedBridgingAngle>
+  <fixedBridgingAngle>0</fixedBridgingAngle>
+  <applyBridgingToPerimeters>1</applyBridgingToPerimeters>
+  <filamentDiameters>1.75|1.75|1.75|1.75|1.75|1.75</filamentDiameters>
+  <filamentPricesPerKg>110|46|46|46|46|46</filamentPricesPerKg>
+  <filamentDensities>1.25|1.25|1.25|1.25|1.25|1.25</filamentDensities>
+  <useMinPrintHeight>0</useMinPrintHeight>
+  <minPrintHeight>0</minPrintHeight>
+  <useMaxPrintHeight>0</useMaxPrintHeight>
+  <maxPrintHeight>0</maxPrintHeight>
+  <useDiaphragm>0</useDiaphragm>
+  <diaphragmLayerInterval>20</diaphragmLayerInterval>
+  <robustSlicing>1</robustSlicing>
+  <mergeAllIntoSolid>0</mergeAllIntoSolid>
+  <onlyRetractWhenCrossingOutline>0</onlyRetractWhenCrossingOutline>
+  <retractBetweenLayers>0</retractBetweenLayers>
+  <useRetractionMinTravel>0</useRetractionMinTravel>
+  <retractionMinTravel>3</retractionMinTravel>
+  <retractWhileWiping>0</retractWhileWiping>
+  <onlyWipeOutlines>0</onlyWipeOutlines>
+  <avoidCrossingOutline>1</avoidCrossingOutline>
+  <maxMovementDetourFactor>20</maxMovementDetourFactor>
+  <toolChangeRetractionDistance>12</toolChangeRetractionDistance>
+  <toolChangeExtraRestartDistance>-0.5</toolChangeExtraRestartDistance>
+  <toolChangeRetractionSpeed>600</toolChangeRetractionSpeed>
+  <externalThinWallType>1</externalThinWallType>
+  <internalThinWallType>1</internalThinWallType>
+  <thinWallAllowedOverlapPercentage>10</thinWallAllowedOverlapPercentage>
+  <singleExtrusionMinLength>0</singleExtrusionMinLength>
+  <singleExtrusionMinPrintingWidthPercentage>50</singleExtrusionMinPrintingWidthPercentage>
+  <singleExtrusionMaxPrintingWidthPercentage>200</singleExtrusionMaxPrintingWidthPercentage>
+  <singleExtrusionEndpointExtension>0.3</singleExtrusionEndpointExtension>
+  <horizontalSizeCompensation>0</horizontalSizeCompensation>
+  <autoConfigureMaterial name="PLA">
+    <defaultSpeed>5400</defaultSpeed>
+    <globalExtruderTemperature>198</globalExtruderTemperature>
+    <globalBedTemperature>60</globalBedTemperature>
+    <globalExtrusionMultiplier>1</globalExtrusionMultiplier>
+    <fanSpeed>
+      <setpoint layer="1" speed="0"/>
+      <setpoint layer="2" speed="100"/>
+    </fanSpeed>
+  </autoConfigureMaterial>
+  <autoConfigureMaterial name="PolyLite PLA">
+    <defaultSpeed>4800</defaultSpeed>
+    <globalExtruderTemperature>203</globalExtruderTemperature>
+    <globalBedTemperature>60</globalBedTemperature>
+    <globalExtrusionMultiplier>1</globalExtrusionMultiplier>
+    <fanSpeed>
+      <setpoint layer="1" speed="0"/>
+      <setpoint layer="2" speed="100"/>
+    </fanSpeed>
+  </autoConfigureMaterial>
+  <autoConfigureMaterial name="eSUN PLA+">
+    <defaultSpeed>5400</defaultSpeed>
+    <globalExtruderTemperature>210</globalExtruderTemperature>
+    <globalBedTemperature>60</globalBedTemperature>
+    <globalExtrusionMultiplier>1</globalExtrusionMultiplier>
+    <fanSpeed>
+      <setpoint layer="1" speed="0"/>
+      <setpoint layer="2" speed="100"/>
+    </fanSpeed>
+  </autoConfigureMaterial>
+  <autoConfigureMaterial name="PETG">
+    <defaultSpeed>3600</defaultSpeed>
+    <globalExtruderTemperature>240</globalExtruderTemperature>
+    <globalBedTemperature>60</globalBedTemperature>
+    <globalExtrusionMultiplier>1</globalExtrusionMultiplier>
+    <fanSpeed>
+      <setpoint layer="1" speed="0"/>
+      <setpoint layer="2" speed="100"/>
+    </fanSpeed>
+  </autoConfigureMaterial>
+  <autoConfigureQuality name="Fast">
+    <defaultSpeed>3600</defaultSpeed>
+    <horizontalSizeCompensation>0</horizontalSizeCompensation>
+    <postProcessing>{STRIP &quot;;&quot;},{PREPEND &quot;M117 bed PID SET OK!\n&quot;},{PREPEND &quot;M118 //action:setPIDbed\n&quot;},{PREPEND &quot;M117 E0 PID SET OK!\n&quot;},{PREPEND &quot;M118 //action:setPIDe0\n&quot;},{PREPEND &quot;;printer_model=ender3\n&quot;}</postProcessing>
+    <mergeAllIntoSolid>0</mergeAllIntoSolid>
+    <spiralVaseMode>0</spiralVaseMode>
+    <layerHeight>0.3</layerHeight>
+    <topSolidLayers>5</topSolidLayers>
+    <bottomSolidLayers>3</bottomSolidLayers>
+    <perimeterOutlines>3</perimeterOutlines>
+    <skirtLayers>1</skirtLayers>
+    <infillPercentage>20</infillPercentage>
+    <supportInfillPercentage>30</supportInfillPercentage>
+    <firstLayerUnderspeed>0.2</firstLayerUnderspeed>
+    <firstLayerHeightPercentage>66</firstLayerHeightPercentage>
+  </autoConfigureQuality>
+  <autoConfigureQuality name="Medium">
+    <defaultSpeed>5400</defaultSpeed>
+    <horizontalSizeCompensation>0</horizontalSizeCompensation>
+    <postProcessing>{STRIP &quot;;&quot;},{PREPEND &quot;M117 bed PID SET OK!\n&quot;},{PREPEND &quot;M118 //action:setPIDbed\n&quot;},{PREPEND &quot;M117 E0 PID SET OK!\n&quot;},{PREPEND &quot;M118 //action:setPIDe0\n&quot;},{PREPEND &quot;;printer_model=ender3\n&quot;}</postProcessing>
+    <mergeAllIntoSolid>0</mergeAllIntoSolid>
+    <spiralVaseMode>0</spiralVaseMode>
+    <layerHeight>0.2</layerHeight>
+    <topSolidLayers>5</topSolidLayers>
+    <bottomSolidLayers>3</bottomSolidLayers>
+    <perimeterOutlines>3</perimeterOutlines>
+    <skirtLayers>1</skirtLayers>
+    <infillPercentage>20</infillPercentage>
+    <supportInfillPercentage>30</supportInfillPercentage>
+    <firstLayerUnderspeed>0.18</firstLayerUnderspeed>
+    <firstLayerHeightPercentage>100</firstLayerHeightPercentage>
+  </autoConfigureQuality>
+  <autoConfigureQuality name="High">
+    <defaultSpeed>7200</defaultSpeed>
+    <horizontalSizeCompensation>0</horizontalSizeCompensation>
+    <postProcessing>{STRIP &quot;;&quot;},{PREPEND &quot;M117 bed PID SET OK!\n&quot;},{PREPEND &quot;M118 //action:setPIDbed\n&quot;},{PREPEND &quot;M117 E0 PID SET OK!\n&quot;},{PREPEND &quot;M118 //action:setPIDe0\n&quot;},{PREPEND &quot;;printer_model=ender3\n&quot;}</postProcessing>
+    <mergeAllIntoSolid>0</mergeAllIntoSolid>
+    <spiralVaseMode>0</spiralVaseMode>
+    <layerHeight>0.1</layerHeight>
+    <topSolidLayers>8</topSolidLayers>
+    <bottomSolidLayers>6</bottomSolidLayers>
+    <perimeterOutlines>3</perimeterOutlines>
+    <skirtLayers>1</skirtLayers>
+    <infillPercentage>20</infillPercentage>
+    <supportInfillPercentage>40</supportInfillPercentage>
+    <firstLayerUnderspeed>0.2</firstLayerUnderspeed>
+    <firstLayerHeightPercentage>200</firstLayerHeightPercentage>
+  </autoConfigureQuality>
+  <autoConfigureQuality name="------------2nd------------">
+  </autoConfigureQuality>
+  <autoConfigureQuality name="beautiful surface">
+    <printPerimetersInsideOut>0</printPerimetersInsideOut>
+  </autoConfigureQuality>
+  <autoConfigureQuality name="overhang good">
+    <printPerimetersInsideOut>1</printPerimetersInsideOut>
+  </autoConfigureQuality>
+  <autoConfigureQuality name="+0.1mm">
+    <horizontalSizeCompensation>0.1</horizontalSizeCompensation>
+  </autoConfigureQuality>
+  <autoConfigureQuality name="-0.1mm">
+    <horizontalSizeCompensation>-0.1</horizontalSizeCompensation>
+  </autoConfigureQuality>
+  <autoConfigureQuality name="Z lift off">
+  <extruder name="Primary Extruder">
+    <retractionZLift>0</retractionZLift>
+  </extruder>
+  </autoConfigureQuality>
+  <autoConfigureQuality name="Z lift on">
+  <extruder name="Primary Extruder">
+    <retractionZLift>0.15</retractionZLift>
+  </extruder>
+  </autoConfigureQuality>
+  <autoConfigureQuality name="vase">
+    <mergeAllIntoSolid>1</mergeAllIntoSolid>
+    <spiralVaseMode>1</spiralVaseMode>
+    <topSolidLayers>0</topSolidLayers>
+    <bottomSolidLayers>3</bottomSolidLayers>
+    <perimeterOutlines>1</perimeterOutlines>
+    <skirtLayers>1</skirtLayers>
+    <infillPercentage>0</infillPercentage>
+    <supportInfillPercentage>1</supportInfillPercentage>
+  </autoConfigureQuality>
+  <autoConfigureQuality name="-------postProcessing-------">
+  </autoConfigureQuality>
+  <autoConfigureQuality name="change filament at Z">
+    <postProcessing>|;{REPLACE &quot;; layer&quot; &quot;M117 Layer&quot;}; show layer number and Z height on LCD|;{REPLACE &quot; Z = &quot; &quot; Z=&quot;}; make room on LCD for text|;{REPLACE &quot;\nM117 Layer 51, Z=&quot; &quot;\nG1 X5 Y5\nM300 S1000 P1000\nM0 Click to continue\nM600\nM117 Layer 51, Z=&quot;}; pause at layer, CHANGE FILAMENT, play sound|{STRIP &quot;;&quot;}|{PREPEND &quot;M117 bed PID SET OK!\n&quot;}|{PREPEND &quot;M118 //action:setPIDbed\n&quot;}|{PREPEND &quot;M117 E0 PID SET OK!\n&quot;}|{PREPEND &quot;M118 //action:setPIDe0\n&quot;}|{PREPEND &quot;;printer_model=ender3\n&quot;}</postProcessing>
+  </autoConfigureQuality>
+  <autoConfigureQuality name="upload to octoprint via curl">
+    <postProcessing>curl -k -H &quot;X-Api-Key: B17CBE4BFCA9427AB5D4CE4E23D1A646&quot; -F &quot;select=true&quot; -F &quot;print=true&quot; -F &quot;file=@[output_filepath]&quot; &quot;http://192.168.1.156:5000/api/files/local&quot;,{STRIP &quot;;&quot;},{PREPEND &quot;M117 bed PID SET OK!\n&quot;},{PREPEND &quot;M118 //action:setPIDbed\n&quot;},{PREPEND &quot;M117 E0 PID SET OK!\n&quot;},{PREPEND &quot;M118 //action:setPIDe0\n&quot;},{PREPEND &quot;;printer_model=ender3\n&quot;}</postProcessing>
+  </autoConfigureQuality>
+  <autoConfigureQuality name="upload to octoprint via ccUploader">
+    <postProcessing>CCUPLOADER_FOR_OCTOPRINT.exe &quot;[output_filepath]&quot;,{STRIP &quot;;&quot;},{PREPEND &quot;M117 bed PID SET OK!\n&quot;},{PREPEND &quot;M118 //action:setPIDbed\n&quot;},{PREPEND &quot;M117 E0 PID SET OK!\n&quot;},{PREPEND &quot;M118 //action:setPIDe0\n&quot;},{PREPEND &quot;;printer_model=ender3\n&quot;}</postProcessing>
+  </autoConfigureQuality>
+</profile>

@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<profile name="CR10 mini" version="2020-05-30 11:30:37" app="S3D-Software 4.1.2">
+<profile name="CR10 mini" version="2020-05-30 12:44:24" app="S3D-Software 4.1.2">
   <baseProfile>Default (modified)</baseProfile>
   <printMaterial>eSUN PLA+</printMaterial>
   <printQuality>Medium</printQuality>
@@ -146,7 +146,7 @@
   <layerChangeGcode>M118 //action:layerChange</layerChangeGcode>
   <retractionGcode></retractionGcode>
   <toolChangeGcode></toolChangeGcode>
-  <endingGcode>G28 X0 ; home X axis,G92 E0 ; zero the extruded length,G1 E-15 F1800 ; retract,M104 S0 ; kill extruder temperature,M140 S0 ; kill bed temperature,G1 Y150 ; y to camera center,G1 Z240 F600 ; z to max,M107; kill fan,M84 ; disable motors,M81 ; power off,M300 S3520 P200,M300 S4698.63 P200,M300 S5274.04 P200,M300 S6271.93 P200,;M118 //action:prompt_begin GCODE IS COMPLETE FINISHED. Please choose how to proceed:,;M118 //action:prompt_choice PRINT AGAIN,;M118 //action:prompt_choice SHUTDOWN PRINTER,;M118 //action:prompt_choice NOTHING TO DO,;M118 //action:prompt_show,;M0 Click to Print!!!,M118 //action:ipaddr,M150 B0 P255 R0 U255 W0</endingGcode>
+  <endingGcode>G28 X0 ; home X axis,G92 E0 ; zero the extruded length,G1 E-15 F1800 ; retract,M104 S0 ; kill extruder temperature,M140 S0 ; kill bed temperature,G1 Y150 ; y to camera center,G1 Z240 F600 ; z to max,M107; kill fan,M84 ; disable motors,M81 ; power off,M300 S3520 P200,M300 S4698.63 P200,M300 S5274.04 P200,M300 S6271.93 P200,;M118 //action:prompt_begin GCODE IS COMPLETE FINISHED. Please choose how to proceed:,;M118 //action:prompt_choice PRINT AGAIN,;M118 //action:prompt_choice SHUTDOWN PRINTER,;M118 //action:prompt_choice NOTHING TO DO,;M118 //action:prompt_show,;M0 Click to Print!!!,M118 //action:ipaddr,M150 B0 P255 R0 U255 W0,M400,M220 S100,M221 S100</endingGcode>
   <exportFileFormat>gcode</exportFileFormat>
   <celebration>0</celebration>
   <celebrationSong>Funky Town</celebrationSong>

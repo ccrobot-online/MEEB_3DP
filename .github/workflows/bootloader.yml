@@ -50,12 +50,6 @@ jobs:
         sudo apt-get install gcc
         gcc -v
         
-    - name: Make the bootloader
-      working-directory: ./my_bootloader
-      run: |
-        make ${{ matrix.board }}
-        cp ./build/maple_boot.bin ../bootloader/bootloader_meeb_3dp.bin
-        
     - name: Get the datetime
       id: get_datetime
       uses: ccccmagicboy/get_datetime@master
@@ -63,13 +57,24 @@ jobs:
         tz1: 'Asia'
         tz2: 'Shanghai'        
         
+    - name: Change the config
+      working-directory: ./my_bootloader
+      run: |
+        echo "//${{ steps.get_datetime.outputs.datetime_str }}" >> ./config.h
+        
+    - name: Make the bootloader
+      working-directory: ./my_bootloader
+      run: |
+        make ${{ matrix.board }}
+        cp ./build/maple_boot.bin ../bootloader/bootloader_meeb_3dp.bin   
+        
     - name: Commit the new bin file
       working-directory: ./bootloader
       run: |
         ls -al
         echo "::set-output name=ver::$(git describe --tags --always --dirty)"      
-        git config --global user.email "ci_bot@ccrobot-online.com"
-        git config --global user.name "ci_bot"
+        git config --global user.email "${GITHUB_ACTOR}@users.noreply.github.com"
+        git config --global user.name "${GITHUB_ACTOR}"
         git diff --name-only
         git add bootloader_meeb_3dp.bin
         git commit -m "update the bootloader: ${{ steps.get_datetime.outputs.datetime_str }}"
@@ -80,41 +85,4 @@ jobs:
         git push origin master
         echo "::set-output name=ver::$(git describe --tags --always --dirty)"        
         
-  build_use_platformio:
-    strategy:
-      matrix:
-        os:
-        - ubuntu-18.04
-        board:
-        # - generic-pc13
-        - meeb_3dp
-        
-    runs-on: ${{ matrix.os }}
 
-    steps:
-    - name: Checkout this repos
-      uses: actions/checkout@v2    
-      
-    - name: Clone the bootloader source code
-      run: |
-        git clone --recursive $REPO_URL -b $REPO_BRANCH my_bootloader
-      
-    - name: Select Python 3.7
-      uses: actions/setup-python@v1
-      with:
-        python-version: '3.7' # Version range or exact version of a Python version to use, using semvers version range syntax.
-        architecture: 'x64' # optional x64 or x86. Defaults to x64 if not specified   
-        
-    - name: Install PlatformIO
-      run: |
-        pip install -U https://github.com/platformio/platformio-core/archive/master.zip
-        platformio update
-        platformio --version    
-
-    - name: Complie the bootloader
-      working-directory: my_bootloader
-      run: |
-        platformio run -e meeb_3dp
-        cd .pio/build/meeb_3dp
-        ls -al
-    

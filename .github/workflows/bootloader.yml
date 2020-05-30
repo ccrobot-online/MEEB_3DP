@@ -60,7 +60,7 @@ jobs:
     - name: Change the config
       working-directory: ./my_bootloader
       run: |
-        echo "//${{ steps.get_datetime.outputs.datetime_str }}" >> ./config.h
+        echo "#define TIME_BJ_BJ_CLK ${{ steps.get_datetime.outputs.datetime_str }}" >> ./config.h
         
     - name: Make the bootloader
       working-directory: ./my_bootloader

@@ -25,12 +25,9 @@ env:
   REPO_URL: https://github.com/ccccmagicboy/Marlin.git
   REPO_BRANCH: meeb_3dp_board_pin_define
   
-  BOARD: BOARD_CCROBOT_MEEB_3DP  
-  
 jobs:
   build:
     name: Build for Ender-3
-    # needs: build
     strategy:
       matrix:
         os:
@@ -177,8 +174,8 @@ jobs:
       id: config_marlin
       uses: ccccmagicboy/Marlin_config@meeb_3dp_cr10mini
       with:
-        BOARD: $BOARD
-        LCD_LANGUAGE: 'en'        
+        BOARD: BOARD_CCROBOT_MEEB_3DP
+        LCD_LANGUAGE: en
         
     - name: Complie the Marlin
       working-directory: my_marlin

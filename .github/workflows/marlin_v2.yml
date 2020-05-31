@@ -71,8 +71,8 @@ jobs:
       id: config_marlin
       uses: ccccmagicboy/Marlin_config@meeb_3dp_ender3
       with:
-        BOARD: $BOARD        
-        LCD_LANGUAGE: 'en'
+        BOARD: BOARD_CCROBOT_MEEB_3DP
+        LCD_LANGUAGE: en
         
     - name: Complie the Marlin
       working-directory: my_marlin

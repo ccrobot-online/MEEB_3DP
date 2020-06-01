@@ -6,9 +6,8 @@
 ├── LiquidTWI2
 ├── SailfishLCD
 ├── SlowSoftI2CMaster
-├── SoftwareSerialM
 ├── TMCStepper_ID5513
 ├── U8glib-HAL_ID1932
 └── depend.txt
 
-10 directories, 1 file
+9 directories, 1 file

@@ -22,10 +22,11 @@ on:
 env:
   INPUT_TZ1: Asia
   INPUT_TZ2: Shanghai
-  # REPO_URL: https://github.com/ccccmagicboy/Marlin.git
+  REPO_URL: https://github.com/ccccmagicboy/Marlin.git
+  REPO_BRANCH: fix_meeb_3dp_dep_lib
   # REPO_BRANCH: meeb_3dp_board_pin_define
-  REPO_URL: https://github.com/MarlinFirmware/Marlin
-  REPO_BRANCH: bugfix-2.0.x
+  # REPO_URL: https://github.com/MarlinFirmware/Marlin
+  # REPO_BRANCH: bugfix-2.0.x
   
 jobs:
   build:

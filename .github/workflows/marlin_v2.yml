@@ -68,7 +68,7 @@ jobs:
         chmod +x buildroot/bin/*
         chmod +x buildroot/share/tests/*
         export PATH=./buildroot/bin/:./buildroot/share/tests/:${PATH}
-        run_tests . STM32F103RC_cc_meeb_3dp
+        run_tests . STM32F103RC_meeb
         
     - name: Config the Configuration.h/Configuration_adv.h
       id: config_marlin
@@ -80,13 +80,13 @@ jobs:
     - name: Complie the Marlin
       working-directory: my_marlin
       run: |
-        platformio run -e STM32F103RC_cc_meeb_3dp
-        cd .pio/build/STM32F103RC_cc_meeb_3dp
+        platformio run -e STM32F103RC_meeb
+        cd .pio/build/STM32F103RC_meeb
         ls -al
         cp ./firmware.bin ../../../../Marlin_v2/ender3/firmware.bin
         cp ../../../Marlin/Configuration.h ../../../../Marlin_v2/ender3/Configuration.h
         cp ../../../Marlin/Configuration_adv.h ../../../../Marlin_v2/ender3/Configuration_adv.h
-        cd ../../libdeps/STM32F103RC_cc_meeb_3dp
+        cd ../../libdeps/STM32F103RC_meeb
         ls -al
         tree -L 1 >depend.txt
         cp depend.txt ../../../../Marlin_v2/ender3/depend.txt
@@ -110,7 +110,7 @@ jobs:
         
     - name: Zip the artifact
       run: |
-        zip --junk-paths MEEB_3DP_MARLIN_ENDER3_${{ steps.get_datetime.outputs.datetime_str }} my_marlin/.pio/build/STM32F103RC_cc_meeb_3dp/firmware.bin bootloader/firmware_with_bootloader_for_ender3.bin my_marlin/Marlin/Configuration.h my_marlin/Marlin/Configuration_adv.h README.md
+        zip --junk-paths MEEB_3DP_MARLIN_ENDER3_${{ steps.get_datetime.outputs.datetime_str }} my_marlin/.pio/build/STM32F103RC_meeb/firmware.bin bootloader/firmware_with_bootloader_for_ender3.bin my_marlin/Marlin/Configuration.h my_marlin/Marlin/Configuration_adv.h README.md
                    
     - name: Upload the zip file
       uses: actions/upload-artifact@master
@@ -183,13 +183,13 @@ jobs:
     - name: Complie the Marlin
       working-directory: my_marlin
       run: |
-        platformio run -e STM32F103RC_cc_meeb_3dp
-        cd .pio/build/STM32F103RC_cc_meeb_3dp
+        platformio run -e STM32F103RC_meeb
+        cd .pio/build/STM32F103RC_meeb
         ls -al
         cp ./firmware.bin ../../../../Marlin_v2/cr10mini/firmware.bin
         cp ../../../Marlin/Configuration.h ../../../../Marlin_v2/cr10mini/Configuration.h
         cp ../../../Marlin/Configuration_adv.h ../../../../Marlin_v2/cr10mini/Configuration_adv.h
-        cd ../../libdeps/STM32F103RC_cc_meeb_3dp
+        cd ../../libdeps/STM32F103RC_meeb
         ls -al
         tree -L 1 >depend.txt
         cp depend.txt ../../../../Marlin_v2/cr10mini/depend.txt
@@ -213,7 +213,7 @@ jobs:
         
     - name: Zip the artifact
       run: |
-        zip --junk-paths MEEB_3DP_MARLIN_CR10MINI_${{ steps.get_datetime.outputs.datetime_str }} my_marlin/.pio/build/STM32F103RC_cc_meeb_3dp/firmware.bin bootloader/firmware_with_bootloader_for_cr10mini.bin my_marlin/Marlin/Configuration.h my_marlin/Marlin/Configuration_adv.h README.md
+        zip --junk-paths MEEB_3DP_MARLIN_CR10MINI_${{ steps.get_datetime.outputs.datetime_str }} my_marlin/.pio/build/STM32F103RC_meeb/firmware.bin bootloader/firmware_with_bootloader_for_cr10mini.bin my_marlin/Marlin/Configuration.h my_marlin/Marlin/Configuration_adv.h README.md
                    
     - name: Upload the zip file
       uses: actions/upload-artifact@master

@@ -6,6 +6,7 @@ a 3d printer control board for MEEB.
 
 ![](./img/lcd_header.png)
 
-![](./img/flash_layout.png)
+![](./img/board_dimension.png)
 
+![](./img/flash_layout.png)
 

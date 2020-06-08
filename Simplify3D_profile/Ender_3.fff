@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<profile name="Ender 3" version="2020-05-30 12:44:43" app="S3D-Software 4.1.2">
+<profile name="Ender 3" version="2020-06-08 19:46:14" app="S3D-Software 4.1.2">
   <baseProfile>Default (modified)</baseProfile>
   <printMaterial>eSUN PLA+</printMaterial>
   <printQuality>Medium</printQuality>
@@ -125,7 +125,7 @@
   <machineTypeOverride>0</machineTypeOverride>
   <strokeXoverride>230</strokeXoverride>
   <strokeYoverride>230</strokeYoverride>
-  <strokeZoverride>240</strokeZoverride>
+  <strokeZoverride>235</strokeZoverride>
   <originOffsetXoverride>5</originOffsetXoverride>
   <originOffsetYoverride>5</originOffsetYoverride>
   <originOffsetZoverride>0</originOffsetZoverride>

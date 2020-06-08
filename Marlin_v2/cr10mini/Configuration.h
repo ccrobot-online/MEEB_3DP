@@ -957,7 +957,7 @@
  *
  * In the following example the X and Y offsets are both positive:
  *
- *   #define NOZZLE_TO_PROBE_OFFSET { -41, -14, 0.00 }
+ *   #define NOZZLE_TO_PROBE_OFFSET { -41, -14, -1.50 }
  *
  *     +-- BACK ---+
  *     |           |
@@ -972,7 +972,7 @@
  *
  * Specify a Probe position as { X, Y, Z }
  */
-#define NOZZLE_TO_PROBE_OFFSET { -41, -14, 0.00 }
+#define NOZZLE_TO_PROBE_OFFSET { -41, -14, -1.50 }
 
 // Most probes should stay away from the edges of the bed, but
 // with NOZZLE_AS_PROBE this can be negative for a wider probing area.
@@ -1258,8 +1258,8 @@
     #define MESH_TEST_LAYER_HEIGHT   0.2  // (mm) Default layer height for the G26 Mesh Validation Tool.
     #define MESH_TEST_HOTEND_TEMP 210
     #define MESH_TEST_BED_TEMP      60    // (°C) Default bed temperature for the G26 Mesh Validation Tool.
-    #define G26_XY_FEEDRATE         20    // (mm/s) Feedrate for XY Moves for the G26 Mesh Validation Tool.
-    #define G26_RETRACT_MULTIPLIER 3.6
+    #define G26_XY_FEEDRATE 50
+    #define G26_RETRACT_MULTIPLIER 4.2
   #endif
 
 #endif

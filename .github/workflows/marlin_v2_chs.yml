@@ -29,8 +29,6 @@ env:
   REPO_URL: https://github.com/MarlinFirmware/Marlin
   REPO_BRANCH: bugfix-2.0.x
   
-  MARLIN_LANGS: zh_CN
-  
 jobs:
   build:
     name: Build for Ender-3
@@ -38,6 +36,8 @@ jobs:
       matrix:
         os:
         - ubuntu-18.04
+        langs:
+        - zh_CN
         
     runs-on: ${{ matrix.os }}
 
@@ -80,7 +80,7 @@ jobs:
       uses: ccccmagicboy/Marlin_config@meeb_3dp_ender3
       with:
         BOARD: BOARD_CCROBOT_MEEB_3DP
-        LCD_LANGUAGE: $MARLIN_LANGS
+        LCD_LANGUAGE: ${{ matrix.langs }}
         
     - name: Prepare the font
       working-directory: my_marlin/buildroot/share/fonts/
@@ -192,7 +192,7 @@ jobs:
       uses: ccccmagicboy/Marlin_config@meeb_3dp_cr10mini
       with:
         BOARD: BOARD_CCROBOT_MEEB_3DP
-        LCD_LANGUAGE: $MARLIN_LANGS
+        LCD_LANGUAGE: ${{ matrix.langs }}
         
     - name: Prepare the font
       working-directory: my_marlin/buildroot/share/fonts/

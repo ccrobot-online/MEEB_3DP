@@ -158,6 +158,8 @@ jobs:
       matrix:
         os:
         - ubuntu-18.04
+        langs:
+        - zh_CN
         
     runs-on: ${{ matrix.os }}
 

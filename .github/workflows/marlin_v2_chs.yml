@@ -86,8 +86,8 @@ jobs:
       working-directory: my_marlin/buildroot/share/fonts/
       run: |
         ./get-bdf2u8g.sh
-        cd ../../..
-        ./buildroot/share/fonts/genallfont.sh
+        cd ../../../Marlin
+        MARLIN_LANGS="${{ matrix.langs }}" ../buildroot/share/fonts/genallfont.sh
         
     - name: Complie the Marlin
       working-directory: my_marlin
@@ -200,8 +200,8 @@ jobs:
       working-directory: my_marlin/buildroot/share/fonts/
       run: |
         ./get-bdf2u8g.sh
-        cd ../../..
-        ./buildroot/share/fonts/genallfont.sh
+        cd ../../../Marlin
+        MARLIN_LANGS="${{ matrix.langs }}" ../buildroot/share/fonts/genallfont.sh
         
     - name: Complie the Marlin
       working-directory: my_marlin

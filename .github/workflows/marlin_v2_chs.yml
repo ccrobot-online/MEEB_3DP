@@ -29,6 +29,8 @@ env:
   REPO_URL: https://github.com/MarlinFirmware/Marlin
   REPO_BRANCH: bugfix-2.0.x
   
+  MARLIN_LANGS: zh_CN
+  
 jobs:
   build:
     name: Build for Ender-3
@@ -49,7 +51,9 @@ jobs:
         
     - name: Install apt
       run: |
-        sudo apt-get install tree      
+        sudo apt-get install tree
+        sudo apt-get install xfonts-wqy
+        sudo apt-get install gawk
 
     - name: Select Python 3.7
       uses: actions/setup-python@v1
@@ -76,7 +80,13 @@ jobs:
       uses: ccccmagicboy/Marlin_config@meeb_3dp_ender3
       with:
         BOARD: BOARD_CCROBOT_MEEB_3DP
-        LCD_LANGUAGE: zh_CN
+        LCD_LANGUAGE: $MARLIN_LANGS
+        
+    - name: Prepare the font
+      working-directory: my_marlin/buildroot/share/fonts/
+      run: |
+        ./get-bdf2u8g.sh
+        ./genallfont.sh   
         
     - name: Complie the Marlin
       working-directory: my_marlin
@@ -161,7 +171,9 @@ jobs:
     - name: Install apt
       run: |
         sudo apt-get install tree      
-
+        sudo apt-get install xfonts-wqy
+        sudo apt-get install gawk
+        
     - name: Select Python 3.7
       uses: actions/setup-python@v1
       with:
@@ -179,7 +191,13 @@ jobs:
       uses: ccccmagicboy/Marlin_config@meeb_3dp_cr10mini
       with:
         BOARD: BOARD_CCROBOT_MEEB_3DP
-        LCD_LANGUAGE: zh_CN
+        LCD_LANGUAGE: $MARLIN_LANGS
+        
+    - name: Prepare the font
+      working-directory: my_marlin/buildroot/share/fonts/
+      run: |
+        ./get-bdf2u8g.sh
+        ./genallfont.sh   
         
     - name: Complie the Marlin
       working-directory: my_marlin

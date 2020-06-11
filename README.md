@@ -10,3 +10,6 @@ a 3d printer control board for MEEB.
 
 ![](./img/flash_layout.png)
 
+![](./img/board_under_test.jpg)
+
+

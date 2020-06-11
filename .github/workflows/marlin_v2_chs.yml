@@ -86,7 +86,8 @@ jobs:
       working-directory: my_marlin/buildroot/share/fonts/
       run: |
         ./get-bdf2u8g.sh
-        ./genallfont.sh   
+        cd ../../..
+        ./buildroot/share/fonts/genallfont.sh
         
     - name: Complie the Marlin
       working-directory: my_marlin

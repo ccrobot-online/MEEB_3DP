@@ -98,6 +98,7 @@ jobs:
         cp ./firmware.bin ../../../../Marlin_v2/ender3_chs/firmware.bin
         cp ../../../Marlin/Configuration.h ../../../../Marlin_v2/ender3_chs/Configuration.h
         cp ../../../Marlin/Configuration_adv.h ../../../../Marlin_v2/ender3_chs/Configuration_adv.h
+        cp ../../../Marlin/src/lcd/dogm/fontdata/langdata_zh_CN.h ../../../../Marlin_v2/ender3_chs/langdata_zh_CN.h
         cd ../../libdeps/STM32F103RC_meeb
         ls -al
         tree -L 1 >depend.txt
@@ -142,6 +143,7 @@ jobs:
         git add ../../bootloader/firmware_with_bootloader_for_ender3_chs.bin
         git add Configuration.h
         git add Configuration_adv.h
+        git add langdata_zh_CN.h
         git add depend.txt
         git commit -m "[cron] update the marlin v2 firmware for ender3_chs: ${{ steps.get_datetime.outputs.datetime_str }}"
         git describe --tags --always --dirty="-dev"
@@ -212,6 +214,7 @@ jobs:
         cp ./firmware.bin ../../../../Marlin_v2/cr10mini_chs/firmware.bin
         cp ../../../Marlin/Configuration.h ../../../../Marlin_v2/cr10mini_chs/Configuration.h
         cp ../../../Marlin/Configuration_adv.h ../../../../Marlin_v2/cr10mini_chs/Configuration_adv.h
+        cp ../../../Marlin/src/lcd/dogm/fontdata/langdata_zh_CN.h ../../../../Marlin_v2/cr10mini_chs/langdata_zh_CN.h        
         cd ../../libdeps/STM32F103RC_meeb
         ls -al
         tree -L 1 >depend.txt
@@ -256,6 +259,7 @@ jobs:
         git add ../../bootloader/firmware_with_bootloader_for_cr10mini_chs.bin
         git add Configuration.h
         git add Configuration_adv.h
+        git add langdata_zh_CN.h
         git add depend.txt
         git commit -m "[cron] update the marlin v2 firmware for cr10mini_chs: ${{ steps.get_datetime.outputs.datetime_str }}"
         git describe --tags --always --dirty="-dev"

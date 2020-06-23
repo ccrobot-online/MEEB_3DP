@@ -2256,7 +2256,7 @@
   //#define NEOPIXEL2_PIN    5
   #define NEOPIXEL_PIXELS 17
   //#define NEOPIXEL_IS_SEQUENTIAL   // Sequential display for temperature change - LED by LED. Disable to change all LEDs at once.
-  #define NEOPIXEL_BRIGHTNESS 255
+  #define NEOPIXEL_BRIGHTNESS 80
   #define NEOPIXEL_STARTUP_TEST  // Cycle through colors at startup
 
   // Use a single Neopixel LED for static (background) lighting

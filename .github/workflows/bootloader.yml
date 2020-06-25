@@ -69,12 +69,12 @@ jobs:
         cp ./build/maple_boot.bin ../bootloader/bootloader_meeb_3dp.bin
         
     - name: Check the file        
-    - uses: technote-space/get-diff-action@v1
-        id: git_diff
-        with:
-          PREFIX_FILTER: |
-            bootloader
-          SUFFIX_FILTER: .bin 
+      id: git_diff
+      uses: technote-space/get-diff-action@v1
+      with:
+        PREFIX_FILTER: |
+          bootloader
+        SUFFIX_FILTER: .bin 
         
     - name: Commit the new bin file
       if: steps.git_diff.outputs.diff

@@ -1,14 +1,13 @@
 .
 ├── Adafruit MAX31865 library_ID1253
 ├── Adafruit NeoPixel
-├── Adafruit NeoPixel_ID28
-├── Arduino-L6470
-├── LiquidTWI2
+├── Arduino-L6470_ID2404
+├── LiquidTWI2_ID6063
 ├── SailfishLCD
-├── SlowSoftI2CMaster
+├── SlowSoftI2CMaster_ID7005
 ├── SoftwareSerialM
 ├── TMCStepper_ID5513
 ├── U8glib-HAL_ID1932
 └── depend.txt
 
-10 directories, 1 file
+9 directories, 1 file

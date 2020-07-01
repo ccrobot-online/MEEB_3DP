@@ -5,7 +5,7 @@
 ├── LiquidTWI2_ID6063
 ├── SailfishLCD
 ├── SlowSoftI2CMaster_ID7005
-├── SoftwareSerialM
+├── SoftwareSerialM_ID7095
 ├── TMCStepper_ID5513
 ├── U8glib-HAL_ID1932
 └── depend.txt

@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<profile name="CR10 mini" version="2020-06-09 12:22:35" app="S3D-Software 4.1.2">
+<profile name="CR10 mini" version="2020-07-07 17:46:32" app="S3D-Software 4.1.2">
   <baseProfile>Default (modified)</baseProfile>
   <printMaterial>eSUN PLA+</printMaterial>
   <printQuality>Medium</printQuality>
@@ -150,7 +150,7 @@
   <exportFileFormat>gcode</exportFileFormat>
   <celebration>0</celebration>
   <celebrationSong>Funky Town</celebrationSong>
-  <postProcessing>{STRIP &quot;;&quot;},{PREPEND &quot;M117 bed PID SET OK!\n&quot;},{PREPEND &quot;M118 //action:setPIDbed\n&quot;},{PREPEND &quot;M117 E0 PID SET OK!\n&quot;},{PREPEND &quot;M118 //action:setPIDe0\n&quot;},{PREPEND &quot;;printer_model=ender3\n&quot;}</postProcessing>
+  <postProcessing>{PREPEND &quot;M117 bed PID SET OK!\n&quot;},{PREPEND &quot;M118 //action:setPIDbed\n&quot;},{PREPEND &quot;M117 E0 PID SET OK!\n&quot;},{PREPEND &quot;M118 //action:setPIDe0\n&quot;},{PREPEND &quot;;printer_model=cr10mini\n&quot;}</postProcessing>
   <defaultSpeed>5400</defaultSpeed>
   <outlineUnderspeed>0.5</outlineUnderspeed>
   <solidInfillUnderspeed>0.65</solidInfillUnderspeed>
@@ -237,7 +237,7 @@
   <autoConfigureQuality name="Fast">
     <defaultSpeed>3600</defaultSpeed>
     <horizontalSizeCompensation>0</horizontalSizeCompensation>
-    <postProcessing>{STRIP &quot;;&quot;},{PREPEND &quot;M117 bed PID SET OK!\n&quot;},{PREPEND &quot;M118 //action:setPIDbed\n&quot;},{PREPEND &quot;M117 E0 PID SET OK!\n&quot;},{PREPEND &quot;M118 //action:setPIDe0\n&quot;},{PREPEND &quot;;printer_model=ender3\n&quot;}</postProcessing>
+    <postProcessing>{PREPEND &quot;M117 bed PID SET OK!\n&quot;},{PREPEND &quot;M118 //action:setPIDbed\n&quot;},{PREPEND &quot;M117 E0 PID SET OK!\n&quot;},{PREPEND &quot;M118 //action:setPIDe0\n&quot;},{PREPEND &quot;;printer_model=cr10mini\n&quot;}</postProcessing>
     <mergeAllIntoSolid>0</mergeAllIntoSolid>
     <spiralVaseMode>0</spiralVaseMode>
     <layerHeight>0.3</layerHeight>
@@ -253,7 +253,7 @@
   <autoConfigureQuality name="Medium">
     <defaultSpeed>5400</defaultSpeed>
     <horizontalSizeCompensation>0</horizontalSizeCompensation>
-    <postProcessing>{STRIP &quot;;&quot;},{PREPEND &quot;M117 bed PID SET OK!\n&quot;},{PREPEND &quot;M118 //action:setPIDbed\n&quot;},{PREPEND &quot;M117 E0 PID SET OK!\n&quot;},{PREPEND &quot;M118 //action:setPIDe0\n&quot;},{PREPEND &quot;;printer_model=ender3\n&quot;}</postProcessing>
+    <postProcessing>{PREPEND &quot;M117 bed PID SET OK!\n&quot;},{PREPEND &quot;M118 //action:setPIDbed\n&quot;},{PREPEND &quot;M117 E0 PID SET OK!\n&quot;},{PREPEND &quot;M118 //action:setPIDe0\n&quot;},{PREPEND &quot;;printer_model=cr10mini\n&quot;}</postProcessing>
     <mergeAllIntoSolid>0</mergeAllIntoSolid>
     <spiralVaseMode>0</spiralVaseMode>
     <layerHeight>0.2</layerHeight>
@@ -269,7 +269,7 @@
   <autoConfigureQuality name="High">
     <defaultSpeed>7200</defaultSpeed>
     <horizontalSizeCompensation>0</horizontalSizeCompensation>
-    <postProcessing>{STRIP &quot;;&quot;},{PREPEND &quot;M117 bed PID SET OK!\n&quot;},{PREPEND &quot;M118 //action:setPIDbed\n&quot;},{PREPEND &quot;M117 E0 PID SET OK!\n&quot;},{PREPEND &quot;M118 //action:setPIDe0\n&quot;},{PREPEND &quot;;printer_model=ender3\n&quot;}</postProcessing>
+    <postProcessing>{PREPEND &quot;M117 bed PID SET OK!\n&quot;},{PREPEND &quot;M118 //action:setPIDbed\n&quot;},{PREPEND &quot;M117 E0 PID SET OK!\n&quot;},{PREPEND &quot;M118 //action:setPIDe0\n&quot;},{PREPEND &quot;;printer_model=cr10mini\n&quot;}</postProcessing>
     <mergeAllIntoSolid>0</mergeAllIntoSolid>
     <spiralVaseMode>0</spiralVaseMode>
     <layerHeight>0.1</layerHeight>
@@ -332,12 +332,12 @@
   <autoConfigureQuality name="-------postProcessing-------">
   </autoConfigureQuality>
   <autoConfigureQuality name="change filament at Z">
-    <postProcessing>|;{REPLACE &quot;; layer&quot; &quot;M117 Layer&quot;}; show layer number and Z height on LCD|;{REPLACE &quot; Z = &quot; &quot; Z=&quot;}; make room on LCD for text|;{REPLACE &quot;\nM117 Layer 51, Z=&quot; &quot;\nG1 X5 Y5\nM300 S1000 P1000\nM0 Click to continue\nM600\nM117 Layer 51, Z=&quot;}; pause at layer, CHANGE FILAMENT, play sound|{STRIP &quot;;&quot;}|{PREPEND &quot;M117 bed PID SET OK!\n&quot;}|{PREPEND &quot;M118 //action:setPIDbed\n&quot;}|{PREPEND &quot;M117 E0 PID SET OK!\n&quot;}|{PREPEND &quot;M118 //action:setPIDe0\n&quot;}|{PREPEND &quot;;printer_model=ender3\n&quot;}</postProcessing>
+    <postProcessing>|;{REPLACE &quot;; layer&quot; &quot;M117 Layer&quot;}; show layer number and Z height on LCD|;{REPLACE &quot; Z = &quot; &quot; Z=&quot;}; make room on LCD for text|;{REPLACE &quot;\nM117 Layer 51, Z=&quot; &quot;\nG1 X5 Y5\nM300 S1000 P1000\nM0 Click to continue\nM600\nM117 Layer 51, Z=&quot;}; pause at layer, CHANGE FILAMENT, play sound|{PREPEND &quot;M117 bed PID SET OK!\n&quot;}|{PREPEND &quot;M118 //action:setPIDbed\n&quot;}|{PREPEND &quot;M117 E0 PID SET OK!\n&quot;}|{PREPEND &quot;M118 //action:setPIDe0\n&quot;}|{PREPEND &quot;;printer_model=cr10mini\n&quot;}</postProcessing>
   </autoConfigureQuality>
   <autoConfigureQuality name="upload to octoprint via curl">
-    <postProcessing>curl -k -H &quot;X-Api-Key: B17CBE4BFCA9427AB5D4CE4E23D1A646&quot; -F &quot;select=true&quot; -F &quot;print=true&quot; -F &quot;file=@[output_filepath]&quot; &quot;http://192.168.1.156:5000/api/files/local&quot;,{STRIP &quot;;&quot;},{PREPEND &quot;M117 bed PID SET OK!\n&quot;},{PREPEND &quot;M118 //action:setPIDbed\n&quot;},{PREPEND &quot;M117 E0 PID SET OK!\n&quot;},{PREPEND &quot;M118 //action:setPIDe0\n&quot;},{PREPEND &quot;;printer_model=ender3\n&quot;}</postProcessing>
+    <postProcessing>curl -k -H &quot;X-Api-Key: B17CBE4BFCA9427AB5D4CE4E23D1A646&quot; -F &quot;select=true&quot; -F &quot;print=true&quot; -F &quot;file=@[output_filepath]&quot; &quot;http://192.168.1.156:5000/api/files/local&quot;,{PREPEND &quot;M117 bed PID SET OK!\n&quot;},{PREPEND &quot;M118 //action:setPIDbed\n&quot;},{PREPEND &quot;M117 E0 PID SET OK!\n&quot;},{PREPEND &quot;M118 //action:setPIDe0\n&quot;},{PREPEND &quot;;printer_model=cr10mini\n&quot;}</postProcessing>
   </autoConfigureQuality>
   <autoConfigureQuality name="upload to octoprint via ccUploader">
-    <postProcessing>CCUPLOADER_FOR_OCTOPRINT.exe &quot;[output_filepath]&quot;,{STRIP &quot;;&quot;},{PREPEND &quot;M117 bed PID SET OK!\n&quot;},{PREPEND &quot;M118 //action:setPIDbed\n&quot;},{PREPEND &quot;M117 E0 PID SET OK!\n&quot;},{PREPEND &quot;M118 //action:setPIDe0\n&quot;},{PREPEND &quot;;printer_model=ender3\n&quot;}</postProcessing>
+    <postProcessing>CCUPLOADER_FOR_OCTOPRINT.exe &quot;[output_filepath]&quot;,{PREPEND &quot;M117 bed PID SET OK!\n&quot;},{PREPEND &quot;M118 //action:setPIDbed\n&quot;},{PREPEND &quot;M117 E0 PID SET OK!\n&quot;},{PREPEND &quot;M118 //action:setPIDe0\n&quot;},{PREPEND &quot;;printer_model=cr10mini\n&quot;}</postProcessing>
   </autoConfigureQuality>
 </profile>

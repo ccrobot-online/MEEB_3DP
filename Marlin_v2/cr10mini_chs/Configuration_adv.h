@@ -2209,7 +2209,7 @@
   #define INTERPOLATE       true  // Interpolate X/Y/Z_MICROSTEPS to 256
 
   #if AXIS_IS_TMC(X)
-    #define X_CURRENT 1000
+    #define X_CURRENT 900
     #define X_CURRENT_HOME  X_CURRENT  // (mA) RMS current for sensorless homing
     #define X_MICROSTEPS     16    // 0..256
     #define X_RSENSE 0.1
@@ -2225,7 +2225,7 @@
   #endif
 
   #if AXIS_IS_TMC(Y)
-    #define Y_CURRENT 1000
+    #define Y_CURRENT 900
     #define Y_CURRENT_HOME  Y_CURRENT
     #define Y_MICROSTEPS     16
     #define Y_RSENSE 0.1
@@ -2241,7 +2241,7 @@
   #endif
 
   #if AXIS_IS_TMC(Z)
-    #define Z_CURRENT 1000
+    #define Z_CURRENT 900
     #define Z_CURRENT_HOME  Z_CURRENT
     #define Z_MICROSTEPS 4
     #define Z_RSENSE 0.1
@@ -2273,7 +2273,7 @@
   #endif
 
   #if AXIS_IS_TMC(E0)
-    #define E0_CURRENT 1000
+    #define E0_CURRENT 900
     #define E0_MICROSTEPS    16
     #define E0_RSENSE 0.1
     #define E0_CHAIN_POS     -1
@@ -3504,3 +3504,4 @@
 
 // Enable Marlin dev mode which adds some special commands
 //#define MARLIN_DEV_MODE
+#define USER_DESC_6 "test"#define USER_GCODE_6 "M997"

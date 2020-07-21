@@ -3504,4 +3504,7 @@
 
 // Enable Marlin dev mode which adds some special commands
 //#define MARLIN_DEV_MODE
-#define USER_DESC_6 "test"#define USER_GCODE_6 "M997"
+#define USER_DESC_6 "test1"
+#define USER_GCODE_6 "M997"
+#define USER_DESC_6 "test2"
+#define USER_GCODE_6 "M997"

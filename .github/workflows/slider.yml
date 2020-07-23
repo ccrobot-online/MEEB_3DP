@@ -1,0 +1,157 @@
+#===================================================================================
+# Lisence: MIT
+# Author: ccccmagicboy
+# Url: https://ccrobot-online.com
+#===================================================================================
+# Build the marlin firmware branch bugfix-2.0.x once per day.
+#===================================================================================
+name: MEEB_3DP slider
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+    - '.github/workflows/slider.yml'
+    - '!**.md'
+    - '!**.xlsx'
+    
+  schedule:
+    - cron: 0 8 * * *
+
+env:
+  INPUT_TZ1: Asia
+  INPUT_TZ2: Shanghai
+  # REPO_URL: https://github.com/ccccmagicboy/Marlin.git
+  # REPO_BRANCH: fix_meeb_3dp_dep_lib
+  # REPO_BRANCH: meeb_3dp_board_pin_define
+  
+  REPO_URL: https://github.com/MarlinFirmware/Marlin
+  REPO_BRANCH: bugfix-2.0.x
+  
+  build:
+    name: Build for Slider
+    if: github.repository == 'ccrobot-online/MEEB_3DP'
+
+    strategy:
+      matrix:
+        os:
+        - ubuntu-18.04
+        langs:
+        - zh_CN
+        
+    runs-on: ${{ matrix.os }}
+
+    steps:
+    - name: Checkout this repos
+      uses: actions/checkout@v2    
+      
+    - name: Clone the marlin source code
+      run: |
+        git clone --recursive $REPO_URL -b $REPO_BRANCH my_marlin
+        
+    - name: Install apt
+      run: |
+        sudo apt-get install tree
+        sudo apt-get install xfonts-wqy
+        sudo apt-get install gawk
+
+    - name: Select Python 3.7
+      uses: actions/setup-python@v1
+      with:
+        python-version: '3.7' # Version range or exact version of a Python version to use, using semvers version range syntax.
+        architecture: 'x64' # optional x64 or x86. Defaults to x64 if not specified   
+        
+    - name: Install PlatformIO
+      run: |
+        pip install -U https://github.com/platformio/platformio-core/archive/master.zip
+        platformio update
+        platformio --version
+        
+    - name: Run Tests
+      working-directory: my_marlin
+      run: |
+        chmod +x buildroot/bin/*
+        chmod +x buildroot/tests/*
+        export PATH=./buildroot/bin/:./buildroot/tests/:${PATH}
+        run_tests . STM32F103RC_meeb
+        
+    - name: Config the Configuration.h/Configuration_adv.h
+      id: config_marlin
+      uses: ccccmagicboy/Marlin_config@meeb_3dp_slider
+      with:
+        BOARD: BOARD_CCROBOT_MEEB_3DP
+        LCD_LANGUAGE: ${{ matrix.langs }}
+        
+    - name: Prepare the font
+      working-directory: my_marlin/buildroot/share/fonts/
+      run: |
+        ./get-bdf2u8g.sh
+        cd ../../../Marlin
+        MARLIN_LANGS="${{ matrix.langs }}" ../buildroot/share/fonts/genallfont.sh
+        
+    - name: Complie the Marlin
+      working-directory: my_marlin
+      run: |
+        platformio run -e STM32F103RC_meeb
+        cd .pio/build/STM32F103RC_meeb
+        ls -al
+        cp ./firmware.bin ../../../../Marlin_v2/slider/firmware.bin
+        cp ../../../Marlin/Configuration.h ../../../../Marlin_v2/slider/Configuration.h
+        cp ../../../Marlin/Configuration_adv.h ../../../../Marlin_v2/slider/Configuration_adv.h
+        cp ../../../Marlin/src/lcd/dogm/fontdata/langdata_zh_CN.h ../../../../Marlin_v2/slider/langdata_zh_CN.h
+        cd ../../libdeps/STM32F103RC_meeb
+        ls -al
+        tree -L 1 >depend.txt
+        cp depend.txt ../../../../Marlin_v2/slider/depend.txt
+      
+    - name: Make the final image
+      id: makeimg
+      uses: ccccmagicboy/make_image@master
+      with:
+        BOOTLOADER_PATH: 'bootloader/bootloader_meeb_3dp.bin'
+        BOOTLOADER_OFFSET: '0x0'
+        MARLIN_PATH: 'Marlin_v2/slider/firmware.bin'
+        MARLIN_OFFSET: '0x2000'
+        FILE_OUTPUT_NAME: 'bootloader/firmware_with_bootloader_for_slider_chs.bin'
+          
+    - name: Get the datetime
+      id: get_datetime
+      uses: ccccmagicboy/get_datetime@master
+      with:
+        tz1: 'Asia'
+        tz2: 'Shanghai'             
+        
+    - name: Zip the artifact
+      run: |
+        zip --junk-paths MEEB_3DP_SLIDER_${{ steps.get_datetime.outputs.datetime_str }} my_marlin/.pio/build/STM32F103RC_meeb/firmware.bin bootloader/firmware_with_bootloader_for_slider_chs.bin my_marlin/Marlin/Configuration.h my_marlin/Marlin/Configuration_adv.h README.md
+                   
+    - name: Upload the zip file
+      uses: actions/upload-artifact@master
+      with:
+        name: MEEB_3DP_SLIDER_${{ steps.get_datetime.outputs.datetime_str }}
+        path: MEEB_3DP_SLIDER_${{ steps.get_datetime.outputs.datetime_str }}.zip        
+        
+    - name: Commit the new bin file
+      working-directory: ./Marlin_v2/slider
+      run: |
+        ls -al
+        echo "::set-output name=ver::$(git describe --tags --always --dirty)"      
+        git config --global user.email "${GITHUB_ACTOR}@users.noreply.github.com"
+        git config --global user.name "${GITHUB_ACTOR}"
+        git diff --name-only
+        git add firmware.bin
+        git add ../../bootloader/firmware_with_bootloader_for_slider_chs.bin
+        git add Configuration.h
+        git add Configuration_adv.h
+        git add langdata_zh_CN.h
+        git add depend.txt
+        git commit -m "[cron] update the marlin v2 firmware for slider_chs: ${{ steps.get_datetime.outputs.datetime_str }}"
+        git describe --tags --always --dirty="-dev"
+        echo "::set-output name=ver::$(git describe --tags --always --dirty=\"-dev\")"
+        git remote rm origin
+        git remote add origin https://${{ secrets.GITHUB_ID }}:${{ secrets.GITHUB_PW }}@github.com/ccrobot-online/MEEB_3DP.git
+        git push origin master
+        echo "::set-output name=ver::$(git describe --tags --always --dirty)"   
+
+# test0

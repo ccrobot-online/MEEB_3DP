@@ -3732,6 +3732,13 @@
 
 // Enable Marlin dev mode which adds some special commands
 //#define MARLIN_DEV_MODE
+
+/**
+ * Postmortem Debugging captures misbehavior and outputs the CPU status and backtrace to serial.
+ * When running in the debugger it will break for debugging. This is useful to help understand
+ * a crash from a remote location. Requires ~400 bytes of SRAM and 5Kb of flash.
+ */
+//#define POSTMORTEM_DEBUGGING
 #define HOMING_FEEDRATE_Z (25*60)
 #define USER_DESC_6 "test1"
 #define USER_GCODE_6 "M997"

@@ -127,7 +127,7 @@
 
 // Choose the name from boards.h that matches your setup
 #ifndef MOTHERBOARD
-#define MOTHERBOARD BOARD_CCROBOT_MEEB_3DP
+  #define MOTHERBOARD BOARD_CCROBOT_MEEB_3DP
 #endif
 
 // Name displayed in the LCD "Ready" message and Info menu
@@ -509,9 +509,9 @@
     #define DEFAULT_Ki_LIST {   1.08,   1.08 }
     #define DEFAULT_Kd_LIST { 114.00, 114.00 }
   #else
-#define DEFAULT_Kp 25.20
-#define DEFAULT_Ki 2.11
-#define DEFAULT_Kd 75.35
+    #define DEFAULT_Kp 25.20
+    #define DEFAULT_Ki 2.11
+    #define DEFAULT_Kd 75.35
   #endif
 #endif // PIDTEMP
 
@@ -550,9 +550,9 @@
 
   // 120V 250W silicone heater into 4mm borosilicate (MendelMax 1.5+)
   // from FOPDT model - kp=.39 Tp=405 Tdead=66, Tc set to 79.2, aggressive factor of .15 (vs .1, 1, 10)
-#define DEFAULT_bedKp 356.34
-#define DEFAULT_bedKi 70.15
-#define DEFAULT_bedKd 452.51
+  #define DEFAULT_bedKp 356.34
+  #define DEFAULT_bedKi 70.15
+  #define DEFAULT_bedKd 452.51
 
   // FIND YOUR OWN: "M303 E-1 C8 S90" to run autotune on the bed at 90 degreesC for 8 cycles.
 #endif // PIDTEMPBED
@@ -1721,7 +1721,7 @@
   //#define NOZZLE_PARK_Y_ONLY          // Y move only is required to park
   #define NOZZLE_PARK_Z_RAISE_MIN   2   // (mm) Always raise Z by at least this distance
   #define NOZZLE_PARK_XY_FEEDRATE 100   // (mm/s) X and Y axes feedrate (also used for delta Z axis)
-#define NOZZLE_PARK_Z_FEEDRATE 25
+  #define NOZZLE_PARK_Z_FEEDRATE 25
 #endif
 
 /**
@@ -2640,13 +2640,13 @@
 // Support for Adafruit NeoPixel LED driver
 #define NEOPIXEL_LED
 #if ENABLED(NEOPIXEL_LED)
-#define NEOPIXEL_TYPE NEO_GRBW
+  #define NEOPIXEL_TYPE NEO_GRBW
   //#define NEOPIXEL_PIN     4       // LED driving pin
   //#define NEOPIXEL2_TYPE NEOPIXEL_TYPE
   //#define NEOPIXEL2_PIN    5
-#define NEOPIXEL_PIXELS 16
+  #define NEOPIXEL_PIXELS 16
   //#define NEOPIXEL_IS_SEQUENTIAL   // Sequential display for temperature change - LED by LED. Disable to change all LEDs at once.
-#define NEOPIXEL_BRIGHTNESS 255
+  #define NEOPIXEL_BRIGHTNESS 255
 #define NEOPIXEL_STARTUP_TEST  // Cycle through colors at startup
 
   // Support for second Adafruit NeoPixel LED driver controlled with M150 S1 ...

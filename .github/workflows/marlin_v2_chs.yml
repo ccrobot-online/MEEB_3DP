@@ -7,17 +7,7 @@
 #===================================================================================
 name: MEEB_3DP Marlin v2 chs 简体中文LCD
 
-on:
-  push:
-    branches:
-      - master
-    paths:
-    - '.github/workflows/marlin_v2_chs.yml'
-    - '!**.md'
-    - '!**.xlsx'
-    
-  schedule:
-    - cron: 0 10 * * *
+on: [workflow_dispatch]
 
 env:
   INPUT_TZ1: Asia

@@ -6,17 +6,7 @@
 
 name: MEEB_3DP BOOTLOADER
 
-on:
-  push:
-    branches:
-      - master
-    paths:
-    - '.github/workflows/bootloader.yml'
-    - '!**.md'
-    - '!**.xlsx'
-    
-  schedule:
-    - cron: 0 20 * * *
+on: [workflow_dispatch]
 
 env:
   INPUT_TZ1: Asia

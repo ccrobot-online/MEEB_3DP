@@ -7,17 +7,7 @@
 #===================================================================================
 name: MEEB_3DP Marlin v2
 
-on:
-  push:
-    branches:
-      - master
-    paths:
-    - '.github/workflows/marlin_v2.yml'
-    - '!**.md'
-    - '!**.xlsx'
-    
-  schedule:
-    - cron: 0 20 * * *
+on: [workflow_dispatch]
 
 env:
   INPUT_TZ1: Asia

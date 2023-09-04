@@ -1,0 +1,107 @@
+#===================================================================================
+# Lisence: MIT
+# Author: ccccmagicboy
+# Url: https://ccrobot-online.com
+#===================================================================================
+
+name: ibom
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+    - '.github/workflows/ibom.yml'
+    - '/hardware/src/1-PCB_MEEB_3DP_pcb.json'
+    - '!**.md'
+    - '!**.xlsx'
+    
+  schedule:
+    # - cron: 0 20 * * *
+
+env:
+  INPUT_TZ1: Asia
+  INPUT_TZ2: Shanghai
+  REPO_URL: https://github.com/ccccmagicboy/InteractiveHtmlBom.git
+  REPO_BRANCH: master
+  
+jobs:
+  build:
+    name: Build iBOM from PCB
+    if: github.repository == 'ccccmagicboy/MEEB_3DP'  
+    
+    strategy:
+      matrix:
+        os:
+        - ubuntu-18.04
+  
+    runs-on: ${{ matrix.os }}
+
+    steps:
+    - name: Checkout this repos
+      uses: actions/checkout@v2
+      
+    - name: Fetch tags
+      run: | 
+        git fetch --depth=1 origin +refs/tags/*:refs/tags/*
+        git tag
+        git describe --tags --always --dirty="-dev"
+      
+    - name: Get the python3
+      uses: actions/setup-python@v1
+      with:
+        python-version: '3.x'
+        architecture: 'x64'      
+      
+    - name: Get the datetime
+      id: get_datetime
+      uses: ccccmagicboy/get_datetime@master
+      with:
+        tz1: 'Asia'
+        tz2: 'Shanghai'
+
+    - name: Install the c dependence
+      run: |
+        sudo apt-get update
+        sudo apt-get install libgtk-3-dev
+        sudo apt-get install dpkg-dev build-essential freeglut3-dev libgl1-mesa-dev libglu1-mesa-dev
+        sudo apt-get install libgstreamer-plugins-base1.0-dev libjpeg-dev libnotify-dev libpng-dev libsdl2-dev
+        sudo apt-get install libsm-dev libtiff-dev libwebkit2gtk-4.0-dev libxtst-dev
+        
+    - name: Install the python dependence
+      run: |
+        python3 -m pip install --upgrade pip
+        pip3 install -U -r requirements.txt
+        pip install -U -f https://extras.wxpython.org/wxPython4/extras/linux/gtk3/ubuntu-18.04 wxPython
+        
+    - name: Clone the ibom source code
+      run: |
+        git clone --recursive $REPO_URL -b $REPO_BRANCH my_ibom
+        
+    - name: Run the ibom
+      working-directory: ./my_ibom/InteractiveHtmlBom/
+      run: |
+        export DISPLAY=:0.0
+        python3 generate_interactive_bom.py ../../hardware/src/1-PCB_MEEB_3DP_pcb.json
+        ls -al ../../hardware/src/bom
+      shell: bash        
+      
+    - name: Commit the new bom file
+      working-directory: ./hardware/tools
+      run: |
+        echo "::set-output name=ver::$(git describe --tags --always --dirty)"      
+        git config --global user.email "${GITHUB_ACTOR}@users.noreply.github.com"
+        git config --global user.name "${GITHUB_ACTOR}"
+        git diff --name-only
+        cd ../src/bom
+        git add ibom.html
+        git commit -m "update the bom interactive: ${{ steps.get_datetime.outputs.datetime_str }}"
+        git describe --tags --always --dirty="-dev"
+        echo "::set-output name=ver::$(git describe --tags --always --dirty=\"-dev\")"
+        git remote rm origin
+        git remote add origin https://${{ secrets.GITHUB_ID }}:${{ secrets.GITHUB_PW }}@github.com/ccccmagicboy/MEEB_3DP.git
+        git push origin master
+        echo "::set-output name=ver::$(git describe --tags --always --dirty)"
+
+        
+

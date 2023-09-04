@@ -1,0 +1,10 @@
+requests-html
+xlsxwriter
+selenium
+adafruit-io
+termcolor
+removebg
+pytest
+black
+
+

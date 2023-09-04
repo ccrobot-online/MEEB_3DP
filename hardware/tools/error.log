@@ -1,0 +1,20 @@
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): api.remove.bg:443
+DEBUG:urllib3.connectionpool:https://api.remove.bg:443 "POST /v1.0/removebg HTTP/1.1" 200 344523
+DEBUG:selenium.webdriver.remote.remote_connection:DELETE http://127.0.0.1:57121/session/e5c1ce1863344d1239a1397883dd4dbd/window {}
+DEBUG:urllib3.connectionpool:http://127.0.0.1:57121 "DELETE /session/e5c1ce1863344d1239a1397883dd4dbd/window HTTP/1.1" 200 55
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+DEBUG:selenium.webdriver.remote.remote_connection:POST http://127.0.0.1:57121/session/e5c1ce1863344d1239a1397883dd4dbd/window {"handle": "CDwindow-AB769F97A7D1D1376B20327B29CD5A15"}
+DEBUG:urllib3.connectionpool:http://127.0.0.1:57121 "POST /session/e5c1ce1863344d1239a1397883dd4dbd/window HTTP/1.1" 200 14
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+DEBUG:selenium.webdriver.remote.remote_connection:DELETE http://127.0.0.1:57121/session/e5c1ce1863344d1239a1397883dd4dbd/window {}
+DEBUG:urllib3.connectionpool:http://127.0.0.1:57121 "DELETE /session/e5c1ce1863344d1239a1397883dd4dbd/window HTTP/1.1" 200 12
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+DEBUG:selenium.webdriver.remote.remote_connection:DELETE http://127.0.0.1:57121/session/e5c1ce1863344d1239a1397883dd4dbd {}
+DEBUG:urllib3.connectionpool:http://127.0.0.1:57121 "DELETE /session/e5c1ce1863344d1239a1397883dd4dbd HTTP/1.1" 200 14
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): oapi.dingtalk.com:443
+DEBUG:urllib3.connectionpool:https://oapi.dingtalk.com:443 "POST /robot/send?access_token=a54adad7b6472fe1ef4c353f6e57f5d51ed76c3aa952ad681eeb909d670a729e&timestamp=1588157864378&sign=w0i%2F5PM403h4WNQpvvfbJVEwYtr%2B%2BXvooxCXTktWR2w%3D HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): io.adafruit.com:443
+DEBUG:urllib3.connectionpool:https://io.adafruit.com:443 "GET /api/v2/cccc/feeds/meeb-3dp-p HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): io.adafruit.com:443
+DEBUG:urllib3.connectionpool:https://io.adafruit.com:443 "POST /api/v2/cccc/feeds/meeb-3dp-p/data HTTP/1.1" 200 None

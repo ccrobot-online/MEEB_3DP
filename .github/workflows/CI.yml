@@ -1,0 +1,102 @@
+#===================================================================================
+# Lisence: MIT
+# Author: ccccmagicboy
+# Url: https://ccrobot-online.com.cn
+#===================================================================================
+
+name: CI - MEEB_3DP
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+    - '.github/workflows/CI.yml'
+    - '!**.md'
+    - '!**.xlsx'
+    
+  schedule:
+    - cron: 0 16 * * *
+
+env:
+  INPUT_TZ1: Asia
+  INPUT_TZ2: Shanghai
+  REPO_URL: https://github.com/ccccmagicboy/MEEB_3DP.git
+  REPO_BRANCH: master
+  
+jobs:
+  build:
+    name: Build BOM
+    if: github.repository == 'ccccmagicboy/MEEB_3DP'
+    
+    strategy:
+      matrix:
+        os:
+        - ubuntu-18.04
+  
+    runs-on: ${{ matrix.os }}
+
+    steps:
+    - name: Checkout this repos
+      uses: actions/checkout@v2
+      
+    - name: Fetch tags
+      run: | 
+        git fetch --depth=1 origin +refs/tags/*:refs/tags/*
+        git tag
+        git describe --tags --always --dirty="-dev"
+      
+    - name: Get the python3
+      uses: actions/setup-python@v1
+      with:
+        python-version: '3.x'
+        architecture: 'x64'      
+      
+    - name: Get the datetime
+      id: get_datetime
+      uses: ccccmagicboy/get_datetime@master
+      with:
+        tz1: 'Asia'
+        tz2: 'Shanghai'
+        
+    - name: Install the dependence
+      run: |
+        python3 -m pip install --upgrade pip
+        pip3 install -U -r requirements.txt
+
+    - name: Print the price of MEEB_3DP board 1 pcs
+      id: get_price
+      working-directory: ./hardware/tools
+      env: 
+        CV_JLC_ID: ${{ secrets.CV_JLC_ID }}
+        CV_JLC_PW: ${{ secrets.CV_JLC_PW }}
+        CV_DINGDING_TOKEN: ${{ secrets.CV_DINGDING_TOKEN }}
+      run: |
+        python3 MEEB_3DP_price_check.py
+      shell: bash
+      
+    - name: Save to pdf
+      working-directory: ./hardware/bom
+      run: |
+        sudo add-apt-repository ppa:libreoffice/ppa
+        sudo apt update
+        sudo apt install libreoffice
+        libreoffice --headless --convert-to pdf:calc_pdf_Export BOM_MEEB_3DP_ccSCH_038.xlsx
+      
+    - name: Commit the new bom file
+      working-directory: ./hardware/tools
+      run: |
+        echo "::set-output name=ver::$(git describe --tags --always --dirty)"      
+        git config --global user.email "${GITHUB_ACTOR}@users.noreply.github.com"
+        git config --global user.name "${GITHUB_ACTOR}"
+        git diff --name-only
+        git add -A
+        git commit -m "update the bom: ${{ steps.get_datetime.outputs.datetime_str }}"
+        git describe --tags --always --dirty="-dev"
+        echo "::set-output name=ver::$(git describe --tags --always --dirty=\"-dev\")"
+        git remote rm origin
+        git remote add origin https://${{ secrets.GITHUB_ID }}:${{ secrets.GITHUB_PW }}@github.com/ccccmagicboy/MEEB_3DP.git
+        git push origin master
+        echo "::set-output name=ver::$(git describe --tags --always --dirty)"
+
+        
